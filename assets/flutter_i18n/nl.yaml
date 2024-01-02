@@ -1,2 +1,18 @@
 home:
   test: Welkom
+navigation:
+  home: Home
+  search: Zoeken
+  cart: Winkelwagen
+  selling: Verkopen
+  buying: Kopen
+basic:
+  no_key: geen key
+  title: CardMarketplace
+  app_info: app informatie
+drawer:
+  account: Account
+  settings: Instellingen
+settings:
+  language: Taal
+  colorMode: Kleur modus

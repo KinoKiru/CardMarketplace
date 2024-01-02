@@ -1,2 +1,18 @@
 home:
   test: Willkommen
+navigation:
+  home: Heim
+  search: Suchen
+  cart: Einkaufswagen
+  buying: Kaufen
+  selling: Verkaufen
+basic:
+  no_key: kein Schlüssel
+  title: CardMarketplace
+  app_info: App-Informationen
+drawer:
+  account: Konto
+  settings: Institutionen
+settings:
+  language: Sprache
+  colorMode: Farbmodus

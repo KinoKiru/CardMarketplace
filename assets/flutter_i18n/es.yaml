@@ -1,2 +1,18 @@
 home:
   test: Bienvenido
+navigation:
+  home: Hogar
+  search: Buscar
+  cart: Carro de la compra
+  buying: Comprar
+  selling: Vender
+basic:
+  no_key: no hay llave
+  title: Mercado de tarjetas
+  app_info: información de la aplicación
+drawer:
+  account: Cuenta
+  settings: Instituciones
+settings:
+  language: Idioma
+  colorMode: Modo de color

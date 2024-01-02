@@ -1,2 +1,18 @@
 home:
   test: Welcome
+navigation:
+  home: Home
+  search: Search
+  cart: Shopping cart
+  buying: Buy
+  selling: Sell
+basic:
+  no_key: no key
+  title: CardMarketplace
+  app_info: app information
+drawer:
+  account: Account
+  settings: Settings
+settings:
+  language: Language
+  colorMode: Color mode
