@@ -16,3 +16,5 @@ drawer:
 settings:
   language: Taal
   colorMode: Kleur modus
+  buildnumber: build nummer
+  version: versie

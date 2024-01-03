@@ -46,6 +46,7 @@ dependencies:
   jiffy: ^6.2.1
   faker: ^2.1.0
   http: ^1.1.2
+  package_info_plus: ^5.0.1
 
 dev_dependencies:
   flutter_test:

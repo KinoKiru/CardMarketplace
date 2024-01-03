@@ -40,14 +40,6 @@ class _CustomNavigationDrawerState extends State<CustomNavigationDrawer> {
             label: e.label,
           ),
         ),
-        Expanded(
-          child: InkWell(
-            child: I18nText('basic.app_info'),
-            onTap: () {
-              showAboutDialog(context: context);
-            },
-          ),
-        )
       ],
     );
   }

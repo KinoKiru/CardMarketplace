@@ -4,6 +4,7 @@ import 'package:card_marketplace/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 class Settings extends StatefulWidget {
   const Settings({super.key});
@@ -61,23 +62,40 @@ class _SettingsState extends State<Settings> {
                     }
                   }),
             ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 20),
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: SimpleAsyncBuilder(
+                    future: PackageInfo.fromPlatform(),
+                    onLoad: (PackageInfo info, BuildContext context) => InkWell(
+                      child: Text(info.version),
+                      onTap: () {
+                        showAboutDialog(
+                          context: context,
+                          applicationName:
+                              FlutterI18n.translate(context, 'basic.title'),
+                          children: [
+                            ListTile(
+                              title: I18nText('settings.buildnumber'),
+                              trailing: Text(info.buildNumber),
+                            ),
+                            ListTile(
+                              title: I18nText('settings.version'),
+                              trailing: Text(info.version),
+                            ),
+                          ],
+                        );
+                      },
+                    ),
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ),
     );
   }
-}
-
-List<Widget> localeButtons(
-    BuildContext context, SharedPreferences preferences) {
-  List<Widget> buttons = List<Widget>.empty(growable: true);
-  for (final String locale in <String>['nl', 'es', 'en', 'de']) {
-    buttons.add(ElevatedButton(
-        onPressed: () async {
-          preferences.setString('locale', locale);
-          await FlutterI18n.refresh(context, Locale(locale));
-        },
-        child: Text(locale)));
-  }
-  return buttons;
 }

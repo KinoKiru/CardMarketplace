@@ -16,3 +16,4 @@ drawer:
 settings:
   language: Language
   colorMode: Color mode
+  buildnumber: build number
