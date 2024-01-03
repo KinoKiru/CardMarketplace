@@ -25,7 +25,6 @@ class _CustomAppBarState extends State<CustomAppBar> {
     return Scaffold(
       appBar: AppBar(
         title: I18nText(widget.title),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
       body: widget.body,
       endDrawer: widget.enableDrawer ? const CustomNavigationDrawer() : null,

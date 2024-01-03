@@ -17,3 +17,7 @@ settings:
   language: Language
   colorMode: Color mode
   buildnumber: build number
+  version: version
+search:
+  searchBar: Which card are you looking for?
+  title: Card index

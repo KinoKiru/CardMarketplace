@@ -18,3 +18,6 @@ settings:
   colorMode: Kleur modus
   buildnumber: build nummer
   version: versie
+search:
+  title: Kaarten index
+  searchBar: Welke kaart zoek je?
