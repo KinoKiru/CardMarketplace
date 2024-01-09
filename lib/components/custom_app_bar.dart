@@ -7,6 +7,7 @@ class CustomAppBar extends StatefulWidget {
     super.key,
     this.title = 'basic.no_key',
     this.enableDrawer = true,
+    this.appBarActions,
     this.floatingActionButton,
     required this.body,
   });
@@ -14,6 +15,7 @@ class CustomAppBar extends StatefulWidget {
   final bool enableDrawer;
   final Widget body;
   final Widget? floatingActionButton;
+  final List<Widget>? appBarActions;
 
   @override
   State<CustomAppBar> createState() => _CustomAppBarState();
@@ -25,6 +27,8 @@ class _CustomAppBarState extends State<CustomAppBar> {
     return Scaffold(
       appBar: AppBar(
         title: I18nText(widget.title),
+        centerTitle: false,
+        actions: widget.appBarActions,
       ),
       body: widget.body,
       endDrawer: widget.enableDrawer ? const CustomNavigationDrawer() : null,
