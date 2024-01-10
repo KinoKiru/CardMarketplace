@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'card.dart';
+part of '../../card.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

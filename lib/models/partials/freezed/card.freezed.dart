@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'card.dart';
+part of '../../card.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -284,7 +284,7 @@ class __$$CardImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$CardImpl implements _Card {
+class _$CardImpl with DiagnosticableTreeMixin implements _Card {
   const _$CardImpl(
       {@UUID() required this.id,
       @JsonKey(name: 'object') required this.type,
@@ -356,8 +356,30 @@ class _$CardImpl implements _Card {
   final ImageStatus imageStatus;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'Card(id: $id, type: $type, oracleId: $oracleId, multiverseIds: $multiverseIds, mtgoId: $mtgoId, tcgplayerId: $tcgplayerId, cardmarketId: $cardmarketId, language: $language, uri: $uri, scryfallUri: $scryfallUri, layout: $layout, name: $name, releasedAt: $releasedAt, highResImage: $highResImage, imageStatus: $imageStatus)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'Card'))
+      ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('type', type))
+      ..add(DiagnosticsProperty('oracleId', oracleId))
+      ..add(DiagnosticsProperty('multiverseIds', multiverseIds))
+      ..add(DiagnosticsProperty('mtgoId', mtgoId))
+      ..add(DiagnosticsProperty('tcgplayerId', tcgplayerId))
+      ..add(DiagnosticsProperty('cardmarketId', cardmarketId))
+      ..add(DiagnosticsProperty('language', language))
+      ..add(DiagnosticsProperty('uri', uri))
+      ..add(DiagnosticsProperty('scryfallUri', scryfallUri))
+      ..add(DiagnosticsProperty('layout', layout))
+      ..add(DiagnosticsProperty('name', name))
+      ..add(DiagnosticsProperty('releasedAt', releasedAt))
+      ..add(DiagnosticsProperty('highResImage', highResImage))
+      ..add(DiagnosticsProperty('imageStatus', imageStatus));
   }
 
   @override
