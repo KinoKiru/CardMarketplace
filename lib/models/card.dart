@@ -1,22 +1,12 @@
 // ignore_for_file: invalid_annotation_target
 import 'package:card_marketplace/models/converters/uuid.dart';
+import 'package:card_marketplace/models/miscellaneous.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 // ignore: unused_import
 import 'package:flutter/foundation.dart';
 
 part 'partials/freezed/card.freezed.dart';
 part 'partials/g/card.g.dart';
-
-enum ImageStatus {
-  @JsonValue('missing')
-  missing,
-  @JsonValue('placeholder')
-  placeholder,
-  @JsonValue('lowres')
-  lowRes,
-  @JsonValue('highres_scan')
-  highResScan
-}
 
 @freezed
 class Card with _$Card {
