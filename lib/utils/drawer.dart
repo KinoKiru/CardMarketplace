@@ -1,4 +1,4 @@
-import 'package:card_marketplace/models/navigation.dart';
+import 'package:card_marketplace/models/miscellaneous.dart';
 import 'package:card_marketplace/pages/drawer_pages/account.dart';
 import 'package:card_marketplace/pages/drawer_pages/settings.dart';
 import 'package:flutter/material.dart';
