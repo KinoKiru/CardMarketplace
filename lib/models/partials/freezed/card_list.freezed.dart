@@ -20,14 +20,11 @@ CardList _$CardListFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CardList {
-  @override
   List<MagicCard> get data => throw _privateConstructorUsedError;
-  @override
-  @JsonKey(name: 'object')
-  String get type => throw _privateConstructorUsedError;
-  @override
+  String get object => throw _privateConstructorUsedError;
+  @JsonKey(name: 'has_more')
   bool get hasMore => throw _privateConstructorUsedError;
-  @override
+  @JsonKey(name: 'next_page')
   Uri? get nextPage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -42,10 +39,10 @@ abstract class $CardListCopyWith<$Res> {
       _$CardListCopyWithImpl<$Res, CardList>;
   @useResult
   $Res call(
-      {@override List<MagicCard> data,
-      @override @JsonKey(name: 'object') String type,
-      @override bool hasMore,
-      @override Uri? nextPage});
+      {List<MagicCard> data,
+      String object,
+      @JsonKey(name: 'has_more') bool hasMore,
+      @JsonKey(name: 'next_page') Uri? nextPage});
 }
 
 /// @nodoc
@@ -62,7 +59,7 @@ class _$CardListCopyWithImpl<$Res, $Val extends CardList>
   @override
   $Res call({
     Object? data = null,
-    Object? type = null,
+    Object? object = null,
     Object? hasMore = null,
     Object? nextPage = freezed,
   }) {
@@ -71,9 +68,9 @@ class _$CardListCopyWithImpl<$Res, $Val extends CardList>
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as List<MagicCard>,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
+      object: null == object
+          ? _value.object
+          : object // ignore: cast_nullable_to_non_nullable
               as String,
       hasMore: null == hasMore
           ? _value.hasMore
@@ -96,10 +93,10 @@ abstract class _$$CardListImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@override List<MagicCard> data,
-      @override @JsonKey(name: 'object') String type,
-      @override bool hasMore,
-      @override Uri? nextPage});
+      {List<MagicCard> data,
+      String object,
+      @JsonKey(name: 'has_more') bool hasMore,
+      @JsonKey(name: 'next_page') Uri? nextPage});
 }
 
 /// @nodoc
@@ -114,7 +111,7 @@ class __$$CardListImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? data = null,
-    Object? type = null,
+    Object? object = null,
     Object? hasMore = null,
     Object? nextPage = freezed,
   }) {
@@ -123,9 +120,9 @@ class __$$CardListImplCopyWithImpl<$Res>
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
               as List<MagicCard>,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
+      object: null == object
+          ? _value.object
+          : object // ignore: cast_nullable_to_non_nullable
               as String,
       hasMore: null == hasMore
           ? _value.hasMore
@@ -144,17 +141,16 @@ class __$$CardListImplCopyWithImpl<$Res>
 @override
 class _$CardListImpl implements _CardList {
   const _$CardListImpl(
-      {@override required final List<MagicCard> data,
-      @override @JsonKey(name: 'object') required this.type,
-      @override required this.hasMore,
-      @override this.nextPage})
+      {required final List<MagicCard> data,
+      required this.object,
+      @JsonKey(name: 'has_more') required this.hasMore,
+      @JsonKey(name: 'next_page') this.nextPage})
       : _data = data;
 
   factory _$CardListImpl.fromJson(Map<String, dynamic> json) =>
       _$$CardListImplFromJson(json);
 
   final List<MagicCard> _data;
-  @override
   @override
   List<MagicCard> get data {
     if (_data is EqualUnmodifiableListView) return _data;
@@ -163,19 +159,17 @@ class _$CardListImpl implements _CardList {
   }
 
   @override
+  final String object;
   @override
-  @JsonKey(name: 'object')
-  final String type;
-  @override
-  @override
+  @JsonKey(name: 'has_more')
   final bool hasMore;
   @override
-  @override
+  @JsonKey(name: 'next_page')
   final Uri? nextPage;
 
   @override
   String toString() {
-    return 'CardList(data: $data, type: $type, hasMore: $hasMore, nextPage: $nextPage)';
+    return 'CardList(data: $data, object: $object, hasMore: $hasMore, nextPage: $nextPage)';
   }
 
   @override
@@ -184,7 +178,7 @@ class _$CardListImpl implements _CardList {
         (other.runtimeType == runtimeType &&
             other is _$CardListImpl &&
             const DeepCollectionEquality().equals(other._data, _data) &&
-            (identical(other.type, type) || other.type == type) &&
+            (identical(other.object, object) || other.object == object) &&
             (identical(other.hasMore, hasMore) || other.hasMore == hasMore) &&
             (identical(other.nextPage, nextPage) ||
                 other.nextPage == nextPage));
@@ -193,7 +187,7 @@ class _$CardListImpl implements _CardList {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_data), type, hasMore, nextPage);
+      const DeepCollectionEquality().hash(_data), object, hasMore, nextPage);
 
   @JsonKey(ignore: true)
   @override
@@ -211,26 +205,23 @@ class _$CardListImpl implements _CardList {
 
 abstract class _CardList implements CardList {
   const factory _CardList(
-      {@override required final List<MagicCard> data,
-      @override @JsonKey(name: 'object') required final String type,
-      @override required final bool hasMore,
-      @override final Uri? nextPage}) = _$CardListImpl;
+      {required final List<MagicCard> data,
+      required final String object,
+      @JsonKey(name: 'has_more') required final bool hasMore,
+      @JsonKey(name: 'next_page') final Uri? nextPage}) = _$CardListImpl;
 
   factory _CardList.fromJson(Map<String, dynamic> json) =
       _$CardListImpl.fromJson;
 
   @override
-  @override
   List<MagicCard> get data;
   @override
+  String get object;
   @override
-  @JsonKey(name: 'object')
-  String get type;
-  @override
-  @override
+  @JsonKey(name: 'has_more')
   bool get hasMore;
   @override
-  @override
+  @JsonKey(name: 'next_page')
   Uri? get nextPage;
   @override
   @JsonKey(ignore: true)

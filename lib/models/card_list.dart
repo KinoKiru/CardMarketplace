@@ -6,14 +6,14 @@ part 'partials/freezed/card_list.freezed.dart';
 part 'partials/g/card_list.g.dart';
 
 @freezed
-class CardList extends BaseListWrapper {
+class CardList with _$CardList implements BaseWrapper {
   // Constructor, includes every field from the scryfall api
   @override
   const factory CardList({
-    @override required List<MagicCard> data,
-    @override @JsonKey(name: 'object') required String type,
-    @override required bool hasMore,
-    @override Uri? nextPage,
+    required List<MagicCard> data,
+    required String object,
+    @JsonKey(name: 'has_more') required bool hasMore,
+    @JsonKey(name: 'next_page') Uri? nextPage,
   }) = _CardList;
 
   @override

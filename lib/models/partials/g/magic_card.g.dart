@@ -9,7 +9,7 @@ part of '../../magic_card.dart';
 _$MagicCardImpl _$$MagicCardImplFromJson(Map<String, dynamic> json) =>
     _$MagicCardImpl(
       id: const UUID().fromJson(json['id'] as String),
-      type: json['object'] as String,
+      object: json['object'] as String,
       oracleId: _$JsonConverterFromJson<String, String>(
           json['oracleId'], const UUID().fromJson),
       multiverseIds: (json['multiverseIds'] as List<dynamic>?)
@@ -20,18 +20,18 @@ _$MagicCardImpl _$$MagicCardImplFromJson(Map<String, dynamic> json) =>
       cardmarketId: json['cardmarketId'] as int?,
       language: json['lang'] as String,
       uri: Uri.parse(json['uri'] as String),
-      scryfallUri: Uri.parse(json['scryfallUri'] as String),
+      scryfallUri: Uri.parse(json['scryfall_uri'] as String),
       layout: json['layout'] as String,
       name: json['name'] as String,
-      releasedAt: DateTime.parse(json['releasedAt'] as String),
+      releasedAt: json['released_at'] as String,
       highResImage: json['highres_image'] as bool,
-      imageStatus: $enumDecode(_$ImageStatusEnumMap, json['imageStatus']),
+      imageStatus: $enumDecode(_$ImageStatusEnumMap, json['image_status']),
     );
 
 Map<String, dynamic> _$$MagicCardImplToJson(_$MagicCardImpl instance) =>
     <String, dynamic>{
       'id': const UUID().toJson(instance.id),
-      'object': instance.type,
+      'object': instance.object,
       'oracleId': _$JsonConverterToJson<String, String>(
           instance.oracleId, const UUID().toJson),
       'multiverseIds': instance.multiverseIds,
@@ -40,12 +40,12 @@ Map<String, dynamic> _$$MagicCardImplToJson(_$MagicCardImpl instance) =>
       'cardmarketId': instance.cardmarketId,
       'lang': instance.language,
       'uri': instance.uri.toString(),
-      'scryfallUri': instance.scryfallUri.toString(),
+      'scryfall_uri': instance.scryfallUri.toString(),
       'layout': instance.layout,
       'name': instance.name,
-      'releasedAt': instance.releasedAt.toIso8601String(),
+      'released_at': instance.releasedAt,
       'highres_image': instance.highResImage,
-      'imageStatus': _$ImageStatusEnumMap[instance.imageStatus]!,
+      'image_status': _$ImageStatusEnumMap[instance.imageStatus]!,
     };
 
 Value? _$JsonConverterFromJson<Json, Value>(

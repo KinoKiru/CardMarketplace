@@ -11,17 +11,17 @@ _$CardListImpl _$$CardListImplFromJson(Map<String, dynamic> json) =>
       data: (json['data'] as List<dynamic>)
           .map((e) => MagicCard.fromJson(e as Map<String, dynamic>))
           .toList(),
-      type: json['object'] as String,
-      hasMore: json['hasMore'] as bool,
-      nextPage: json['nextPage'] == null
+      object: json['object'] as String,
+      hasMore: json['has_more'] as bool,
+      nextPage: json['next_page'] == null
           ? null
-          : Uri.parse(json['nextPage'] as String),
+          : Uri.parse(json['next_page'] as String),
     );
 
 Map<String, dynamic> _$$CardListImplToJson(_$CardListImpl instance) =>
     <String, dynamic>{
       'data': instance.data,
-      'object': instance.type,
-      'hasMore': instance.hasMore,
-      'nextPage': instance.nextPage?.toString(),
+      'object': instance.object,
+      'has_more': instance.hasMore,
+      'next_page': instance.nextPage?.toString(),
     };

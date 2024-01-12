@@ -14,7 +14,7 @@ class MagicCard with _$MagicCard {
   const factory MagicCard({
     // Core Card fields
     @UUID() required String id,
-    @JsonKey(name: 'object') required String type,
+    required String object,
     @UUID() String? oracleId,
     List<int>? multiverseIds,
     int? mtgoId,
@@ -22,7 +22,7 @@ class MagicCard with _$MagicCard {
     int? cardmarketId,
     @JsonKey(name: 'lang') required String language,
     required Uri uri,
-    required Uri scryfallUri,
+    @JsonKey(name: 'scryfall_uri') required Uri scryfallUri,
     required String layout,
 
     // Gameplay fields
@@ -30,9 +30,9 @@ class MagicCard with _$MagicCard {
 
     // Print fields
     // TODO custom converter and jiffy
-    required DateTime releasedAt,
+    @JsonKey(name: 'released_at') required String releasedAt,
     @JsonKey(name: 'highres_image') required bool highResImage,
-    @JsonEnum() required ImageStatus imageStatus,
+    @JsonKey(name: 'image_status') @JsonEnum() required ImageStatus imageStatus,
   }) = _MagicCard;
 
   factory MagicCard.fromJson(Map<String, Object?> json) =>

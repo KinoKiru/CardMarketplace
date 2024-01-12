@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/material_symbols.dart';
-import 'package:card_marketplace/models/magic_card.dart' as card_model;
 
 class Search extends StatefulWidget {
   const Search({super.key});
@@ -65,7 +64,7 @@ class _SearchState extends State<Search> {
                           itemCount: matchedCards.data.length,
                           padding: EdgeInsets.zero,
                           itemBuilder: (BuildContext context, int index) =>
-                              Text('${matchedCards.data[index].name}')),
+                              Text(matchedCards.data[index].name)),
                     ),
                   ),
                 )
