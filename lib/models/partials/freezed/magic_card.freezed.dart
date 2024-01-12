@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of '../../card.dart';
+part of '../../magic_card.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Card _$CardFromJson(Map<String, dynamic> json) {
-  return _Card.fromJson(json);
+MagicCard _$MagicCardFromJson(Map<String, dynamic> json) {
+  return _MagicCard.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Card {
+mixin _$MagicCard {
 // Core Card fields
   @UUID()
   String get id => throw _privateConstructorUsedError;
@@ -46,13 +46,14 @@ mixin _$Card {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CardCopyWith<Card> get copyWith => throw _privateConstructorUsedError;
+  $MagicCardCopyWith<MagicCard> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CardCopyWith<$Res> {
-  factory $CardCopyWith(Card value, $Res Function(Card) then) =
-      _$CardCopyWithImpl<$Res, Card>;
+abstract class $MagicCardCopyWith<$Res> {
+  factory $MagicCardCopyWith(MagicCard value, $Res Function(MagicCard) then) =
+      _$MagicCardCopyWithImpl<$Res, MagicCard>;
   @useResult
   $Res call(
       {@UUID() String id,
@@ -73,9 +74,9 @@ abstract class $CardCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CardCopyWithImpl<$Res, $Val extends Card>
-    implements $CardCopyWith<$Res> {
-  _$CardCopyWithImpl(this._value, this._then);
+class _$MagicCardCopyWithImpl<$Res, $Val extends MagicCard>
+    implements $MagicCardCopyWith<$Res> {
+  _$MagicCardCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -167,10 +168,11 @@ class _$CardCopyWithImpl<$Res, $Val extends Card>
 }
 
 /// @nodoc
-abstract class _$$CardImplCopyWith<$Res> implements $CardCopyWith<$Res> {
-  factory _$$CardImplCopyWith(
-          _$CardImpl value, $Res Function(_$CardImpl) then) =
-      __$$CardImplCopyWithImpl<$Res>;
+abstract class _$$MagicCardImplCopyWith<$Res>
+    implements $MagicCardCopyWith<$Res> {
+  factory _$$MagicCardImplCopyWith(
+          _$MagicCardImpl value, $Res Function(_$MagicCardImpl) then) =
+      __$$MagicCardImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -192,10 +194,11 @@ abstract class _$$CardImplCopyWith<$Res> implements $CardCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$CardImplCopyWithImpl<$Res>
-    extends _$CardCopyWithImpl<$Res, _$CardImpl>
-    implements _$$CardImplCopyWith<$Res> {
-  __$$CardImplCopyWithImpl(_$CardImpl _value, $Res Function(_$CardImpl) _then)
+class __$$MagicCardImplCopyWithImpl<$Res>
+    extends _$MagicCardCopyWithImpl<$Res, _$MagicCardImpl>
+    implements _$$MagicCardImplCopyWith<$Res> {
+  __$$MagicCardImplCopyWithImpl(
+      _$MagicCardImpl _value, $Res Function(_$MagicCardImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -217,7 +220,7 @@ class __$$CardImplCopyWithImpl<$Res>
     Object? highResImage = null,
     Object? imageStatus = null,
   }) {
-    return _then(_$CardImpl(
+    return _then(_$MagicCardImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -284,8 +287,8 @@ class __$$CardImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$CardImpl with DiagnosticableTreeMixin implements _Card {
-  const _$CardImpl(
+class _$MagicCardImpl with DiagnosticableTreeMixin implements _MagicCard {
+  const _$MagicCardImpl(
       {@UUID() required this.id,
       @JsonKey(name: 'object') required this.type,
       @UUID() this.oracleId,
@@ -303,8 +306,8 @@ class _$CardImpl with DiagnosticableTreeMixin implements _Card {
       @JsonEnum() required this.imageStatus})
       : _multiverseIds = multiverseIds;
 
-  factory _$CardImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CardImplFromJson(json);
+  factory _$MagicCardImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MagicCardImplFromJson(json);
 
 // Core Card fields
   @override
@@ -357,14 +360,14 @@ class _$CardImpl with DiagnosticableTreeMixin implements _Card {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Card(id: $id, type: $type, oracleId: $oracleId, multiverseIds: $multiverseIds, mtgoId: $mtgoId, tcgplayerId: $tcgplayerId, cardmarketId: $cardmarketId, language: $language, uri: $uri, scryfallUri: $scryfallUri, layout: $layout, name: $name, releasedAt: $releasedAt, highResImage: $highResImage, imageStatus: $imageStatus)';
+    return 'MagicCard(id: $id, type: $type, oracleId: $oracleId, multiverseIds: $multiverseIds, mtgoId: $mtgoId, tcgplayerId: $tcgplayerId, cardmarketId: $cardmarketId, language: $language, uri: $uri, scryfallUri: $scryfallUri, layout: $layout, name: $name, releasedAt: $releasedAt, highResImage: $highResImage, imageStatus: $imageStatus)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'Card'))
+      ..add(DiagnosticsProperty('type', 'MagicCard'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('type', type))
       ..add(DiagnosticsProperty('oracleId', oracleId))
@@ -386,7 +389,7 @@ class _$CardImpl with DiagnosticableTreeMixin implements _Card {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CardImpl &&
+            other is _$MagicCardImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.oracleId, oracleId) ||
@@ -436,19 +439,19 @@ class _$CardImpl with DiagnosticableTreeMixin implements _Card {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CardImplCopyWith<_$CardImpl> get copyWith =>
-      __$$CardImplCopyWithImpl<_$CardImpl>(this, _$identity);
+  _$$MagicCardImplCopyWith<_$MagicCardImpl> get copyWith =>
+      __$$MagicCardImplCopyWithImpl<_$MagicCardImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$CardImplToJson(
+    return _$$MagicCardImplToJson(
       this,
     );
   }
 }
 
-abstract class _Card implements Card {
-  const factory _Card(
+abstract class _MagicCard implements MagicCard {
+  const factory _MagicCard(
       {@UUID() required final String id,
       @JsonKey(name: 'object') required final String type,
       @UUID() final String? oracleId,
@@ -463,9 +466,10 @@ abstract class _Card implements Card {
       required final String name,
       required final DateTime releasedAt,
       @JsonKey(name: 'highres_image') required final bool highResImage,
-      @JsonEnum() required final ImageStatus imageStatus}) = _$CardImpl;
+      @JsonEnum() required final ImageStatus imageStatus}) = _$MagicCardImpl;
 
-  factory _Card.fromJson(Map<String, dynamic> json) = _$CardImpl.fromJson;
+  factory _MagicCard.fromJson(Map<String, dynamic> json) =
+      _$MagicCardImpl.fromJson;
 
   @override // Core Card fields
   @UUID()
@@ -506,6 +510,6 @@ abstract class _Card implements Card {
   ImageStatus get imageStatus;
   @override
   @JsonKey(ignore: true)
-  _$$CardImplCopyWith<_$CardImpl> get copyWith =>
+  _$$MagicCardImplCopyWith<_$MagicCardImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

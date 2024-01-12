@@ -7,7 +7,7 @@ import 'package:card_marketplace/pages/error.dart';
 class SimpleAsyncBuilder<T> extends StatefulWidget {
   const SimpleAsyncBuilder(
       {super.key, required this.future, required this.onLoad});
-  final Future<T>? future;
+  final Future<T> future;
   final Function(T data, BuildContext context) onLoad;
 
   @override

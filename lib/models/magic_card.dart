@@ -5,14 +5,13 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 // ignore: unused_import
 import 'package:flutter/foundation.dart';
 
-part 'partials/freezed/card.freezed.dart';
-part 'partials/g/card.g.dart';
+part 'partials/freezed/magic_card.freezed.dart';
+part 'partials/g/magic_card.g.dart';
 
 @freezed
-class Card with _$Card {
-  static String apiUrl = "https://api.scryfall.com";
+class MagicCard with _$MagicCard {
   // Constructor, includes every field from the scryfall api
-  const factory Card({
+  const factory MagicCard({
     // Core Card fields
     @UUID() required String id,
     @JsonKey(name: 'object') required String type,
@@ -34,7 +33,8 @@ class Card with _$Card {
     required DateTime releasedAt,
     @JsonKey(name: 'highres_image') required bool highResImage,
     @JsonEnum() required ImageStatus imageStatus,
-  }) = _Card;
+  }) = _MagicCard;
 
-  factory Card.fromJson(Map<String, Object?> json) => _$CardFromJson(json);
+  factory MagicCard.fromJson(Map<String, Object?> json) =>
+      _$MagicCardFromJson(json);
 }

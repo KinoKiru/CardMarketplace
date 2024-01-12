@@ -1,12 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of '../../card.dart';
+part of '../../magic_card.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CardImpl _$$CardImplFromJson(Map<String, dynamic> json) => _$CardImpl(
+_$MagicCardImpl _$$MagicCardImplFromJson(Map<String, dynamic> json) =>
+    _$MagicCardImpl(
       id: const UUID().fromJson(json['id'] as String),
       type: json['object'] as String,
       oracleId: _$JsonConverterFromJson<String, String>(
@@ -27,7 +28,7 @@ _$CardImpl _$$CardImplFromJson(Map<String, dynamic> json) => _$CardImpl(
       imageStatus: $enumDecode(_$ImageStatusEnumMap, json['imageStatus']),
     );
 
-Map<String, dynamic> _$$CardImplToJson(_$CardImpl instance) =>
+Map<String, dynamic> _$$MagicCardImplToJson(_$MagicCardImpl instance) =>
     <String, dynamic>{
       'id': const UUID().toJson(instance.id),
       'object': instance.type,
