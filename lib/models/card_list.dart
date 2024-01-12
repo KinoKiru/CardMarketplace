@@ -6,7 +6,7 @@ part 'partials/freezed/card_list.freezed.dart';
 part 'partials/g/card_list.g.dart';
 
 @freezed
-class CardList with _$CardList implements BaseWrapper {
+class CardList extends BaseWrapper with _$CardList {
   // Constructor, includes every field from the scryfall api
   @override
   const factory CardList({
