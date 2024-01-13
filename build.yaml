@@ -1,0 +1,17 @@
+targets:
+  $default:
+    builders:
+      source_gen|combining_builder:
+        generate_for:
+          - lib/**.dart
+        options:
+          build_extensions:
+            # I want this line to "work":
+            # '^lib/**/{{}}.dart': 'lib/generated/model/{{}}.g.dart'
+            "lib/{{path}}/{{file}}.dart": "lib/{{path}}/partials/g/{{file}}.g.dart"
+      freezed:
+        options:
+          build_extensions:
+            # I want this line to "work":
+            # '^lib/**/{{}}.dart': 'lib/generated/model/{{}}.freezed.dart'
+            "lib/{{path}}/{{file}}.dart": "lib/{{path}}/partials/freezed/{{file}}.freezed.dart"

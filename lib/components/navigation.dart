@@ -65,7 +65,7 @@ class _NavigationState extends State<Navigation> {
       controller: _controller,
       items: _getNavItems(context),
       confineInSafeArea: true,
-      popAllScreensOnTapOfSelectedTab: true,
+      popAllScreensOnTapAnyTabs: true,
       popActionScreens: PopActionScreensType.all,
       navBarStyle: NavBarStyle.style15,
       screens: _getScreens(),

@@ -27,7 +27,7 @@ class _SettingsState extends State<Settings> {
             ListTile(
               title: I18nText('settings.colorMode'),
               trailing: Switch(
-                value: pref.getBool('isDarkMode')!,
+                value: pref.getBool('isDarkMode') ?? false,
                 onChanged: (bool newValue) => {
                   pref.setBool('isDarkMode', newValue),
                   App.of(context).changeTheme(newValue)
