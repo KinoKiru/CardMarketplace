@@ -45,6 +45,8 @@ mixin _$MagicCard {
   @JsonKey(name: 'image_status')
   @JsonEnum()
   ImageStatus get imageStatus => throw _privateConstructorUsedError;
+  @JsonKey(name: 'image_uris')
+  ImageUris get imageUris => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -72,7 +74,10 @@ abstract class $MagicCardCopyWith<$Res> {
       String name,
       @JsonKey(name: 'released_at') String releasedAt,
       @JsonKey(name: 'highres_image') bool highResImage,
-      @JsonKey(name: 'image_status') @JsonEnum() ImageStatus imageStatus});
+      @JsonKey(name: 'image_status') @JsonEnum() ImageStatus imageStatus,
+      @JsonKey(name: 'image_uris') ImageUris imageUris});
+
+  $ImageUrisCopyWith<$Res> get imageUris;
 }
 
 /// @nodoc
@@ -103,6 +108,7 @@ class _$MagicCardCopyWithImpl<$Res, $Val extends MagicCard>
     Object? releasedAt = null,
     Object? highResImage = null,
     Object? imageStatus = null,
+    Object? imageUris = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -165,7 +171,19 @@ class _$MagicCardCopyWithImpl<$Res, $Val extends MagicCard>
           ? _value.imageStatus
           : imageStatus // ignore: cast_nullable_to_non_nullable
               as ImageStatus,
+      imageUris: null == imageUris
+          ? _value.imageUris
+          : imageUris // ignore: cast_nullable_to_non_nullable
+              as ImageUris,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ImageUrisCopyWith<$Res> get imageUris {
+    return $ImageUrisCopyWith<$Res>(_value.imageUris, (value) {
+      return _then(_value.copyWith(imageUris: value) as $Val);
+    });
   }
 }
 
@@ -192,7 +210,11 @@ abstract class _$$MagicCardImplCopyWith<$Res>
       String name,
       @JsonKey(name: 'released_at') String releasedAt,
       @JsonKey(name: 'highres_image') bool highResImage,
-      @JsonKey(name: 'image_status') @JsonEnum() ImageStatus imageStatus});
+      @JsonKey(name: 'image_status') @JsonEnum() ImageStatus imageStatus,
+      @JsonKey(name: 'image_uris') ImageUris imageUris});
+
+  @override
+  $ImageUrisCopyWith<$Res> get imageUris;
 }
 
 /// @nodoc
@@ -221,6 +243,7 @@ class __$$MagicCardImplCopyWithImpl<$Res>
     Object? releasedAt = null,
     Object? highResImage = null,
     Object? imageStatus = null,
+    Object? imageUris = null,
   }) {
     return _then(_$MagicCardImpl(
       id: null == id
@@ -283,6 +306,10 @@ class __$$MagicCardImplCopyWithImpl<$Res>
           ? _value.imageStatus
           : imageStatus // ignore: cast_nullable_to_non_nullable
               as ImageStatus,
+      imageUris: null == imageUris
+          ? _value.imageUris
+          : imageUris // ignore: cast_nullable_to_non_nullable
+              as ImageUris,
     ));
   }
 }
@@ -305,7 +332,8 @@ class _$MagicCardImpl with DiagnosticableTreeMixin implements _MagicCard {
       required this.name,
       @JsonKey(name: 'released_at') required this.releasedAt,
       @JsonKey(name: 'highres_image') required this.highResImage,
-      @JsonKey(name: 'image_status') @JsonEnum() required this.imageStatus})
+      @JsonKey(name: 'image_status') @JsonEnum() required this.imageStatus,
+      @JsonKey(name: 'image_uris') required this.imageUris})
       : _multiverseIds = multiverseIds;
 
   factory _$MagicCardImpl.fromJson(Map<String, dynamic> json) =>
@@ -361,10 +389,13 @@ class _$MagicCardImpl with DiagnosticableTreeMixin implements _MagicCard {
   @JsonKey(name: 'image_status')
   @JsonEnum()
   final ImageStatus imageStatus;
+  @override
+  @JsonKey(name: 'image_uris')
+  final ImageUris imageUris;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'MagicCard(id: $id, object: $object, oracleId: $oracleId, multiverseIds: $multiverseIds, mtgoId: $mtgoId, tcgplayerId: $tcgplayerId, cardmarketId: $cardmarketId, language: $language, uri: $uri, scryfallUri: $scryfallUri, layout: $layout, name: $name, releasedAt: $releasedAt, highResImage: $highResImage, imageStatus: $imageStatus)';
+    return 'MagicCard(id: $id, object: $object, oracleId: $oracleId, multiverseIds: $multiverseIds, mtgoId: $mtgoId, tcgplayerId: $tcgplayerId, cardmarketId: $cardmarketId, language: $language, uri: $uri, scryfallUri: $scryfallUri, layout: $layout, name: $name, releasedAt: $releasedAt, highResImage: $highResImage, imageStatus: $imageStatus, imageUris: $imageUris)';
   }
 
   @override
@@ -386,7 +417,8 @@ class _$MagicCardImpl with DiagnosticableTreeMixin implements _MagicCard {
       ..add(DiagnosticsProperty('name', name))
       ..add(DiagnosticsProperty('releasedAt', releasedAt))
       ..add(DiagnosticsProperty('highResImage', highResImage))
-      ..add(DiagnosticsProperty('imageStatus', imageStatus));
+      ..add(DiagnosticsProperty('imageStatus', imageStatus))
+      ..add(DiagnosticsProperty('imageUris', imageUris));
   }
 
   @override
@@ -417,7 +449,9 @@ class _$MagicCardImpl with DiagnosticableTreeMixin implements _MagicCard {
             (identical(other.highResImage, highResImage) ||
                 other.highResImage == highResImage) &&
             (identical(other.imageStatus, imageStatus) ||
-                other.imageStatus == imageStatus));
+                other.imageStatus == imageStatus) &&
+            (identical(other.imageUris, imageUris) ||
+                other.imageUris == imageUris));
   }
 
   @JsonKey(ignore: true)
@@ -438,7 +472,8 @@ class _$MagicCardImpl with DiagnosticableTreeMixin implements _MagicCard {
       name,
       releasedAt,
       highResImage,
-      imageStatus);
+      imageStatus,
+      imageUris);
 
   @JsonKey(ignore: true)
   @override
@@ -456,23 +491,25 @@ class _$MagicCardImpl with DiagnosticableTreeMixin implements _MagicCard {
 
 abstract class _MagicCard implements MagicCard {
   const factory _MagicCard(
-      {@UUID() required final String id,
-      required final String object,
-      @UUID() final String? oracleId,
-      final List<int>? multiverseIds,
-      final int? mtgoId,
-      final int? tcgplayerId,
-      final int? cardmarketId,
-      @JsonKey(name: 'lang') required final String language,
-      required final Uri uri,
-      @JsonKey(name: 'scryfall_uri') required final Uri scryfallUri,
-      required final String layout,
-      required final String name,
-      @JsonKey(name: 'released_at') required final String releasedAt,
-      @JsonKey(name: 'highres_image') required final bool highResImage,
-      @JsonKey(name: 'image_status')
-      @JsonEnum()
-      required final ImageStatus imageStatus}) = _$MagicCardImpl;
+          {@UUID() required final String id,
+          required final String object,
+          @UUID() final String? oracleId,
+          final List<int>? multiverseIds,
+          final int? mtgoId,
+          final int? tcgplayerId,
+          final int? cardmarketId,
+          @JsonKey(name: 'lang') required final String language,
+          required final Uri uri,
+          @JsonKey(name: 'scryfall_uri') required final Uri scryfallUri,
+          required final String layout,
+          required final String name,
+          @JsonKey(name: 'released_at') required final String releasedAt,
+          @JsonKey(name: 'highres_image') required final bool highResImage,
+          @JsonKey(name: 'image_status')
+          @JsonEnum()
+          required final ImageStatus imageStatus,
+          @JsonKey(name: 'image_uris') required final ImageUris imageUris}) =
+      _$MagicCardImpl;
 
   factory _MagicCard.fromJson(Map<String, dynamic> json) =
       _$MagicCardImpl.fromJson;
@@ -516,6 +553,9 @@ abstract class _MagicCard implements MagicCard {
   @JsonKey(name: 'image_status')
   @JsonEnum()
   ImageStatus get imageStatus;
+  @override
+  @JsonKey(name: 'image_uris')
+  ImageUris get imageUris;
   @override
   @JsonKey(ignore: true)
   _$$MagicCardImplCopyWith<_$MagicCardImpl> get copyWith =>

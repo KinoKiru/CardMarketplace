@@ -1,9 +1,9 @@
-import 'package:card_marketplace/models/card_list.dart';
 import 'package:card_marketplace/models/magic_card.dart';
+import 'package:card_marketplace/models/list_wrapper.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
-part 'partials/g/client.g.dart';
+part 'generated/g/client.g.dart';
 
 @RestApi(baseUrl: 'https://api.scryfall.com/')
 abstract class RestClient {
@@ -16,5 +16,6 @@ abstract class RestClient {
   Future<MagicCard> getRandomCard();
 
   @GET('/cards/search')
-  Future<CardList> searchCards(@Query('q') String searchValue);
+  Future<ListWrapper<MagicCard>> searchCards(
+      @Query('q', encoded: true) String searchValue);
 }

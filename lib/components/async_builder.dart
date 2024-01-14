@@ -23,6 +23,7 @@ class _SimpleAsyncBuilderState<T> extends State<SimpleAsyncBuilder<T>> {
         if (snapshot.hasData) {
           return widget.onLoad(snapshot.requireData, context);
         } else if (snapshot.hasError) {
+          print(snapshot.error);
           return ErrorPage(error: '${snapshot.error}');
         } else {
           return const Loading();

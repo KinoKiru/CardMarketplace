@@ -26,6 +26,7 @@ _$MagicCardImpl _$$MagicCardImplFromJson(Map<String, dynamic> json) =>
       releasedAt: json['released_at'] as String,
       highResImage: json['highres_image'] as bool,
       imageStatus: $enumDecode(_$ImageStatusEnumMap, json['image_status']),
+      imageUris: ImageUris.fromJson(json['image_uris'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$MagicCardImplToJson(_$MagicCardImpl instance) =>
@@ -46,6 +47,7 @@ Map<String, dynamic> _$$MagicCardImplToJson(_$MagicCardImpl instance) =>
       'released_at': instance.releasedAt,
       'highres_image': instance.highResImage,
       'image_status': _$ImageStatusEnumMap[instance.imageStatus]!,
+      'image_uris': instance.imageUris,
     };
 
 Value? _$JsonConverterFromJson<Json, Value>(

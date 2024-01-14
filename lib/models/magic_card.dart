@@ -1,12 +1,13 @@
 // ignore_for_file: invalid_annotation_target
 import 'package:card_marketplace/models/converters/uuid.dart';
+import 'package:card_marketplace/models/image_uris.dart';
 import 'package:card_marketplace/models/miscellaneous.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 // ignore: unused_import
 import 'package:flutter/foundation.dart';
 
-part 'partials/freezed/magic_card.freezed.dart';
-part 'partials/g/magic_card.g.dart';
+part 'generated/freezed/magic_card.freezed.dart';
+part 'generated/g/magic_card.g.dart';
 
 @freezed
 class MagicCard with _$MagicCard {
@@ -33,6 +34,7 @@ class MagicCard with _$MagicCard {
     @JsonKey(name: 'released_at') required String releasedAt,
     @JsonKey(name: 'highres_image') required bool highResImage,
     @JsonKey(name: 'image_status') @JsonEnum() required ImageStatus imageStatus,
+    @JsonKey(name: 'image_uris') required ImageUris imageUris,
   }) = _MagicCard;
 
   factory MagicCard.fromJson(Map<String, Object?> json) =>

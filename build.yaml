@@ -6,16 +6,16 @@ targets:
           - lib/**.dart
         options:
           build_extensions:
-            "lib/{{path}}/{{file}}.dart": "lib/{{path}}/partials/g/{{file}}.g.dart"
+            "lib/{{path}}/{{file}}.dart": "lib/{{path}}/generated/g/{{file}}.g.dart"
       freezed:
         options:
           build_extensions:
-            "lib/{{path}}/{{file}}.dart": "lib/{{path}}/partials/freezed/{{file}}.freezed.dart"
+            "lib/{{path}}/{{file}}.dart": "lib/{{path}}/generated/freezed/{{file}}.freezed.dart"
       retrofit_generator|retrofit:
         enabled: true
         generate_for:
           - lib/api/*.dart
         options:
           build_extensions:
-            "lib/{{path}}/{{file}}.dart": "lib/{{path}}/partials/g/{{file}}.g.dart"
+            "lib/{{path}}/{{file}}.dart": "lib/{{path}}/generated/g/{{file}}.g.dart"
           nullsafety: true
