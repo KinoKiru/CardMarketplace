@@ -15,9 +15,9 @@ _$MagicCardImpl _$$MagicCardImplFromJson(Map<String, dynamic> json) =>
       multiverseIds: (json['multiverseIds'] as List<dynamic>?)
           ?.map((e) => e as int)
           .toList(),
-      mtgoId: json['mtgoId'] as int?,
-      tcgplayerId: json['tcgplayerId'] as int?,
-      cardmarketId: json['cardmarketId'] as int?,
+      mtgoId: json['mtgo_id'] as int?,
+      tcgplayerId: json['tcgplayer_id'] as int?,
+      cardmarketId: json['cardmarket_id'] as int?,
       language: json['lang'] as String,
       uri: Uri.parse(json['uri'] as String),
       scryfallUri: Uri.parse(json['scryfall_uri'] as String),
@@ -26,7 +26,9 @@ _$MagicCardImpl _$$MagicCardImplFromJson(Map<String, dynamic> json) =>
       releasedAt: json['released_at'] as String,
       highResImage: json['highres_image'] as bool,
       imageStatus: $enumDecode(_$ImageStatusEnumMap, json['image_status']),
-      imageUris: ImageUris.fromJson(json['image_uris'] as Map<String, dynamic>),
+      imageUris: json['image_uris'] == null
+          ? null
+          : ImageUris.fromJson(json['image_uris'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$MagicCardImplToJson(_$MagicCardImpl instance) =>
@@ -36,9 +38,9 @@ Map<String, dynamic> _$$MagicCardImplToJson(_$MagicCardImpl instance) =>
       'oracleId': _$JsonConverterToJson<String, String>(
           instance.oracleId, const UUID().toJson),
       'multiverseIds': instance.multiverseIds,
-      'mtgoId': instance.mtgoId,
-      'tcgplayerId': instance.tcgplayerId,
-      'cardmarketId': instance.cardmarketId,
+      'mtgo_id': instance.mtgoId,
+      'tcgplayer_id': instance.tcgplayerId,
+      'cardmarket_id': instance.cardmarketId,
       'lang': instance.language,
       'uri': instance.uri.toString(),
       'scryfall_uri': instance.scryfallUri.toString(),

@@ -20,14 +20,14 @@ ImageUris _$ImageUrisFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ImageUris {
-  Uri get small => throw _privateConstructorUsedError;
-  Uri get normal => throw _privateConstructorUsedError;
-  Uri get large => throw _privateConstructorUsedError;
-  Uri get png => throw _privateConstructorUsedError;
+  Uri? get small => throw _privateConstructorUsedError;
+  Uri? get normal => throw _privateConstructorUsedError;
+  Uri? get large => throw _privateConstructorUsedError;
+  Uri? get png => throw _privateConstructorUsedError;
   @JsonKey(name: 'art_crop')
-  Uri get artCrop => throw _privateConstructorUsedError;
+  Uri? get artCrop => throw _privateConstructorUsedError;
   @JsonKey(name: 'border_crop')
-  Uri get borderCrop => throw _privateConstructorUsedError;
+  Uri? get borderCrop => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,12 +41,12 @@ abstract class $ImageUrisCopyWith<$Res> {
       _$ImageUrisCopyWithImpl<$Res, ImageUris>;
   @useResult
   $Res call(
-      {Uri small,
-      Uri normal,
-      Uri large,
-      Uri png,
-      @JsonKey(name: 'art_crop') Uri artCrop,
-      @JsonKey(name: 'border_crop') Uri borderCrop});
+      {Uri? small,
+      Uri? normal,
+      Uri? large,
+      Uri? png,
+      @JsonKey(name: 'art_crop') Uri? artCrop,
+      @JsonKey(name: 'border_crop') Uri? borderCrop});
 }
 
 /// @nodoc
@@ -62,38 +62,38 @@ class _$ImageUrisCopyWithImpl<$Res, $Val extends ImageUris>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? small = null,
-    Object? normal = null,
-    Object? large = null,
-    Object? png = null,
-    Object? artCrop = null,
-    Object? borderCrop = null,
+    Object? small = freezed,
+    Object? normal = freezed,
+    Object? large = freezed,
+    Object? png = freezed,
+    Object? artCrop = freezed,
+    Object? borderCrop = freezed,
   }) {
     return _then(_value.copyWith(
-      small: null == small
+      small: freezed == small
           ? _value.small
           : small // ignore: cast_nullable_to_non_nullable
-              as Uri,
-      normal: null == normal
+              as Uri?,
+      normal: freezed == normal
           ? _value.normal
           : normal // ignore: cast_nullable_to_non_nullable
-              as Uri,
-      large: null == large
+              as Uri?,
+      large: freezed == large
           ? _value.large
           : large // ignore: cast_nullable_to_non_nullable
-              as Uri,
-      png: null == png
+              as Uri?,
+      png: freezed == png
           ? _value.png
           : png // ignore: cast_nullable_to_non_nullable
-              as Uri,
-      artCrop: null == artCrop
+              as Uri?,
+      artCrop: freezed == artCrop
           ? _value.artCrop
           : artCrop // ignore: cast_nullable_to_non_nullable
-              as Uri,
-      borderCrop: null == borderCrop
+              as Uri?,
+      borderCrop: freezed == borderCrop
           ? _value.borderCrop
           : borderCrop // ignore: cast_nullable_to_non_nullable
-              as Uri,
+              as Uri?,
     ) as $Val);
   }
 }
@@ -107,12 +107,12 @@ abstract class _$$ImageUrisImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Uri small,
-      Uri normal,
-      Uri large,
-      Uri png,
-      @JsonKey(name: 'art_crop') Uri artCrop,
-      @JsonKey(name: 'border_crop') Uri borderCrop});
+      {Uri? small,
+      Uri? normal,
+      Uri? large,
+      Uri? png,
+      @JsonKey(name: 'art_crop') Uri? artCrop,
+      @JsonKey(name: 'border_crop') Uri? borderCrop});
 }
 
 /// @nodoc
@@ -126,38 +126,38 @@ class __$$ImageUrisImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? small = null,
-    Object? normal = null,
-    Object? large = null,
-    Object? png = null,
-    Object? artCrop = null,
-    Object? borderCrop = null,
+    Object? small = freezed,
+    Object? normal = freezed,
+    Object? large = freezed,
+    Object? png = freezed,
+    Object? artCrop = freezed,
+    Object? borderCrop = freezed,
   }) {
     return _then(_$ImageUrisImpl(
-      small: null == small
+      small: freezed == small
           ? _value.small
           : small // ignore: cast_nullable_to_non_nullable
-              as Uri,
-      normal: null == normal
+              as Uri?,
+      normal: freezed == normal
           ? _value.normal
           : normal // ignore: cast_nullable_to_non_nullable
-              as Uri,
-      large: null == large
+              as Uri?,
+      large: freezed == large
           ? _value.large
           : large // ignore: cast_nullable_to_non_nullable
-              as Uri,
-      png: null == png
+              as Uri?,
+      png: freezed == png
           ? _value.png
           : png // ignore: cast_nullable_to_non_nullable
-              as Uri,
-      artCrop: null == artCrop
+              as Uri?,
+      artCrop: freezed == artCrop
           ? _value.artCrop
           : artCrop // ignore: cast_nullable_to_non_nullable
-              as Uri,
-      borderCrop: null == borderCrop
+              as Uri?,
+      borderCrop: freezed == borderCrop
           ? _value.borderCrop
           : borderCrop // ignore: cast_nullable_to_non_nullable
-              as Uri,
+              as Uri?,
     ));
   }
 }
@@ -177,19 +177,19 @@ class _$ImageUrisImpl implements _ImageUris {
       _$$ImageUrisImplFromJson(json);
 
   @override
-  final Uri small;
+  final Uri? small;
   @override
-  final Uri normal;
+  final Uri? normal;
   @override
-  final Uri large;
+  final Uri? large;
   @override
-  final Uri png;
+  final Uri? png;
   @override
   @JsonKey(name: 'art_crop')
-  final Uri artCrop;
+  final Uri? artCrop;
   @override
   @JsonKey(name: 'border_crop')
-  final Uri borderCrop;
+  final Uri? borderCrop;
 
   @override
   String toString() {
@@ -231,31 +231,31 @@ class _$ImageUrisImpl implements _ImageUris {
 
 abstract class _ImageUris implements ImageUris {
   const factory _ImageUris(
-          {required final Uri small,
-          required final Uri normal,
-          required final Uri large,
-          required final Uri png,
-          @JsonKey(name: 'art_crop') required final Uri artCrop,
-          @JsonKey(name: 'border_crop') required final Uri borderCrop}) =
+          {required final Uri? small,
+          required final Uri? normal,
+          required final Uri? large,
+          required final Uri? png,
+          @JsonKey(name: 'art_crop') required final Uri? artCrop,
+          @JsonKey(name: 'border_crop') required final Uri? borderCrop}) =
       _$ImageUrisImpl;
 
   factory _ImageUris.fromJson(Map<String, dynamic> json) =
       _$ImageUrisImpl.fromJson;
 
   @override
-  Uri get small;
+  Uri? get small;
   @override
-  Uri get normal;
+  Uri? get normal;
   @override
-  Uri get large;
+  Uri? get large;
   @override
-  Uri get png;
+  Uri? get png;
   @override
   @JsonKey(name: 'art_crop')
-  Uri get artCrop;
+  Uri? get artCrop;
   @override
   @JsonKey(name: 'border_crop')
-  Uri get borderCrop;
+  Uri? get borderCrop;
   @override
   @JsonKey(ignore: true)
   _$$ImageUrisImplCopyWith<_$ImageUrisImpl> get copyWith =>

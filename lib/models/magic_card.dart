@@ -18,9 +18,9 @@ class MagicCard with _$MagicCard {
     required String object,
     @UUID() String? oracleId,
     List<int>? multiverseIds,
-    int? mtgoId,
-    int? tcgplayerId,
-    int? cardmarketId,
+    @JsonKey(name: 'mtgo_id') int? mtgoId,
+    @JsonKey(name: 'tcgplayer_id') int? tcgplayerId,
+    @JsonKey(name: 'cardmarket_id') int? cardmarketId,
     @JsonKey(name: 'lang') required String language,
     required Uri uri,
     @JsonKey(name: 'scryfall_uri') required Uri scryfallUri,
@@ -34,7 +34,7 @@ class MagicCard with _$MagicCard {
     @JsonKey(name: 'released_at') required String releasedAt,
     @JsonKey(name: 'highres_image') required bool highResImage,
     @JsonKey(name: 'image_status') @JsonEnum() required ImageStatus imageStatus,
-    @JsonKey(name: 'image_uris') required ImageUris imageUris,
+    @JsonKey(name: 'image_uris') ImageUris? imageUris,
   }) = _MagicCard;
 
   factory MagicCard.fromJson(Map<String, Object?> json) =>

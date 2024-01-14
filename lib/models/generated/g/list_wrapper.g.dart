@@ -16,7 +16,7 @@ _$ListWrapperImpl<T> _$$ListWrapperImplFromJson<T>(
       nextPage: json['next_page'] == null
           ? null
           : Uri.parse(json['next_page'] as String),
-      data: fromJsonT(json['data']),
+      data: (json['data'] as List<dynamic>).map(fromJsonT).toList(),
     );
 
 Map<String, dynamic> _$$ListWrapperImplToJson<T>(
@@ -27,5 +27,5 @@ Map<String, dynamic> _$$ListWrapperImplToJson<T>(
       'object': instance.object,
       'has_more': instance.hasMore,
       'next_page': instance.nextPage?.toString(),
-      'data': toJsonT(instance.data),
+      'data': instance.data.map(toJsonT).toList(),
     };

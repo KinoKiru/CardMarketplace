@@ -26,7 +26,7 @@ mixin _$ListWrapper<T> {
   bool get hasMore => throw _privateConstructorUsedError;
   @JsonKey(name: 'next_page')
   Uri? get nextPage => throw _privateConstructorUsedError;
-  T get data => throw _privateConstructorUsedError;
+  List<T> get data => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson(Object? Function(T) toJsonT) =>
       throw _privateConstructorUsedError;
@@ -45,7 +45,7 @@ abstract class $ListWrapperCopyWith<T, $Res> {
       {String object,
       @JsonKey(name: 'has_more') bool hasMore,
       @JsonKey(name: 'next_page') Uri? nextPage,
-      T data});
+      List<T> data});
 }
 
 /// @nodoc
@@ -64,7 +64,7 @@ class _$ListWrapperCopyWithImpl<T, $Res, $Val extends ListWrapper<T>>
     Object? object = null,
     Object? hasMore = null,
     Object? nextPage = freezed,
-    Object? data = freezed,
+    Object? data = null,
   }) {
     return _then(_value.copyWith(
       object: null == object
@@ -79,10 +79,10 @@ class _$ListWrapperCopyWithImpl<T, $Res, $Val extends ListWrapper<T>>
           ? _value.nextPage
           : nextPage // ignore: cast_nullable_to_non_nullable
               as Uri?,
-      data: freezed == data
+      data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as T,
+              as List<T>,
     ) as $Val);
   }
 }
@@ -99,7 +99,7 @@ abstract class _$$ListWrapperImplCopyWith<T, $Res>
       {String object,
       @JsonKey(name: 'has_more') bool hasMore,
       @JsonKey(name: 'next_page') Uri? nextPage,
-      T data});
+      List<T> data});
 }
 
 /// @nodoc
@@ -116,7 +116,7 @@ class __$$ListWrapperImplCopyWithImpl<T, $Res>
     Object? object = null,
     Object? hasMore = null,
     Object? nextPage = freezed,
-    Object? data = freezed,
+    Object? data = null,
   }) {
     return _then(_$ListWrapperImpl<T>(
       object: null == object
@@ -131,10 +131,10 @@ class __$$ListWrapperImplCopyWithImpl<T, $Res>
           ? _value.nextPage
           : nextPage // ignore: cast_nullable_to_non_nullable
               as Uri?,
-      data: freezed == data
-          ? _value.data
+      data: null == data
+          ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as T,
+              as List<T>,
     ));
   }
 }
@@ -148,7 +148,8 @@ class _$ListWrapperImpl<T>
       {required this.object,
       @JsonKey(name: 'has_more') required this.hasMore,
       @JsonKey(name: 'next_page') this.nextPage,
-      required this.data});
+      required final List<T> data})
+      : _data = data;
 
   factory _$ListWrapperImpl.fromJson(
           Map<String, dynamic> json, T Function(Object?) fromJsonT) =>
@@ -162,8 +163,13 @@ class _$ListWrapperImpl<T>
   @override
   @JsonKey(name: 'next_page')
   final Uri? nextPage;
+  final List<T> _data;
   @override
-  final T data;
+  List<T> get data {
+    if (_data is EqualUnmodifiableListView) return _data;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_data);
+  }
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -190,13 +196,13 @@ class _$ListWrapperImpl<T>
             (identical(other.hasMore, hasMore) || other.hasMore == hasMore) &&
             (identical(other.nextPage, nextPage) ||
                 other.nextPage == nextPage) &&
-            const DeepCollectionEquality().equals(other.data, data));
+            const DeepCollectionEquality().equals(other._data, _data));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, object, hasMore, nextPage,
-      const DeepCollectionEquality().hash(data));
+      const DeepCollectionEquality().hash(_data));
 
   @JsonKey(ignore: true)
   @override
@@ -216,7 +222,7 @@ abstract class _ListWrapper<T> implements ListWrapper<T> {
       {required final String object,
       @JsonKey(name: 'has_more') required final bool hasMore,
       @JsonKey(name: 'next_page') final Uri? nextPage,
-      required final T data}) = _$ListWrapperImpl<T>;
+      required final List<T> data}) = _$ListWrapperImpl<T>;
 
   factory _ListWrapper.fromJson(
           Map<String, dynamic> json, T Function(Object?) fromJsonT) =
@@ -231,7 +237,7 @@ abstract class _ListWrapper<T> implements ListWrapper<T> {
   @JsonKey(name: 'next_page')
   Uri? get nextPage;
   @override
-  T get data;
+  List<T> get data;
   @override
   @JsonKey(ignore: true)
   _$$ListWrapperImplCopyWith<T, _$ListWrapperImpl<T>> get copyWith =>

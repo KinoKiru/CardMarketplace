@@ -13,7 +13,7 @@ abstract class ListWrapper<T> with _$ListWrapper {
     required String object,
     @JsonKey(name: 'has_more') required bool hasMore,
     @JsonKey(name: 'next_page') Uri? nextPage,
-    required T data,
+    required List<T> data,
   }) = _ListWrapper;
 
   factory ListWrapper.fromJson(

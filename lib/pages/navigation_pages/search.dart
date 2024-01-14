@@ -1,6 +1,7 @@
 import 'package:card_marketplace/api/client.dart';
 import 'package:card_marketplace/components/async_builder.dart';
 import 'package:card_marketplace/components/custom_app_bar.dart';
+import 'package:card_marketplace/components/partials/list/card_search.dart';
 import 'package:card_marketplace/models/list_wrapper.dart';
 import 'package:card_marketplace/models/magic_card.dart';
 import 'package:dio/dio.dart';
@@ -67,7 +68,7 @@ class _SearchState extends State<Search> {
                       itemCount: matchedCards.data.length,
                       padding: EdgeInsets.zero,
                       itemBuilder: (BuildContext context, int index) =>
-                          Text(matchedCards.data[index].name),
+                          CardSearchListItem(card: matchedCards.data[index]),
                     ),
                   ),
                 )

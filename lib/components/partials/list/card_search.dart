@@ -7,10 +7,25 @@ class CardSearchListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Image.network(card.imageUris.normal.toString()),
-      ],
+    return InkWell(
+      onTap: () => print(card.id),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Image.network(
+              card.imageUris != null
+                  ? card.imageUris!.artCrop.toString()
+                  : card.imageUris!.normal.toString(),
+              width: 150,
+              height: 115,
+            ),
+            Text(card.name),
+            Text(card.releasedAt)
+          ],
+        ),
+      ),
     );
   }
 }
