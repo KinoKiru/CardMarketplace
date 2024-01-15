@@ -1,6 +1,6 @@
-import 'package:card_marketplace/pages/loading.dart';
+import 'package:card_marketplace/components/loading.dart';
 import 'package:flutter/material.dart';
-import 'package:card_marketplace/pages/error.dart';
+import 'package:card_marketplace/pages/error_page.dart';
 
 /// SimpleAsyncBuilder
 /// Used when data needs to be awaited but not checked.

@@ -1,4 +1,5 @@
 import 'package:card_marketplace/models/magic_card.dart';
+import 'package:card_marketplace/pages/flow_pages/card_page.dart';
 import 'package:flutter/material.dart';
 
 class CardSearchListItem extends StatelessWidget {
@@ -8,7 +9,12 @@ class CardSearchListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => print(card.id),
+      onTap: () => Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (BuildContext context) => MagicCardPage(id: card.id),
+        ),
+      ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12.0),
         child: Row(
