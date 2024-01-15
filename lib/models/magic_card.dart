@@ -28,6 +28,7 @@ class MagicCard with _$MagicCard {
 
     // Gameplay fields
     required String name,
+    @JsonKey(name: 'oracle_text') String? oracleText,
 
     // Print fields
     // TODO custom converter and jiffy

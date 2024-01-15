@@ -39,7 +39,9 @@ mixin _$MagicCard {
   @JsonKey(name: 'scryfall_uri')
   Uri get scryfallUri => throw _privateConstructorUsedError;
   String get layout => throw _privateConstructorUsedError; // Gameplay fields
-  String get name => throw _privateConstructorUsedError; // Print fields
+  String get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'oracle_text')
+  String? get oracleText => throw _privateConstructorUsedError; // Print fields
 // TODO custom converter and jiffy
   @JsonKey(name: 'released_at')
   String get releasedAt => throw _privateConstructorUsedError;
@@ -75,6 +77,7 @@ abstract class $MagicCardCopyWith<$Res> {
       @JsonKey(name: 'scryfall_uri') Uri scryfallUri,
       String layout,
       String name,
+      @JsonKey(name: 'oracle_text') String? oracleText,
       @JsonKey(name: 'released_at') String releasedAt,
       @JsonKey(name: 'highres_image') bool highResImage,
       @JsonKey(name: 'image_status') @JsonEnum() ImageStatus imageStatus,
@@ -108,6 +111,7 @@ class _$MagicCardCopyWithImpl<$Res, $Val extends MagicCard>
     Object? scryfallUri = null,
     Object? layout = null,
     Object? name = null,
+    Object? oracleText = freezed,
     Object? releasedAt = null,
     Object? highResImage = null,
     Object? imageStatus = null,
@@ -162,6 +166,10 @@ class _$MagicCardCopyWithImpl<$Res, $Val extends MagicCard>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      oracleText: freezed == oracleText
+          ? _value.oracleText
+          : oracleText // ignore: cast_nullable_to_non_nullable
+              as String?,
       releasedAt: null == releasedAt
           ? _value.releasedAt
           : releasedAt // ignore: cast_nullable_to_non_nullable
@@ -215,6 +223,7 @@ abstract class _$$MagicCardImplCopyWith<$Res>
       @JsonKey(name: 'scryfall_uri') Uri scryfallUri,
       String layout,
       String name,
+      @JsonKey(name: 'oracle_text') String? oracleText,
       @JsonKey(name: 'released_at') String releasedAt,
       @JsonKey(name: 'highres_image') bool highResImage,
       @JsonKey(name: 'image_status') @JsonEnum() ImageStatus imageStatus,
@@ -247,6 +256,7 @@ class __$$MagicCardImplCopyWithImpl<$Res>
     Object? scryfallUri = null,
     Object? layout = null,
     Object? name = null,
+    Object? oracleText = freezed,
     Object? releasedAt = null,
     Object? highResImage = null,
     Object? imageStatus = null,
@@ -301,6 +311,10 @@ class __$$MagicCardImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      oracleText: freezed == oracleText
+          ? _value.oracleText
+          : oracleText // ignore: cast_nullable_to_non_nullable
+              as String?,
       releasedAt: null == releasedAt
           ? _value.releasedAt
           : releasedAt // ignore: cast_nullable_to_non_nullable
@@ -337,6 +351,7 @@ class _$MagicCardImpl with DiagnosticableTreeMixin implements _MagicCard {
       @JsonKey(name: 'scryfall_uri') required this.scryfallUri,
       required this.layout,
       required this.name,
+      @JsonKey(name: 'oracle_text') this.oracleText,
       @JsonKey(name: 'released_at') required this.releasedAt,
       @JsonKey(name: 'highres_image') required this.highResImage,
       @JsonKey(name: 'image_status') @JsonEnum() required this.imageStatus,
@@ -387,6 +402,9 @@ class _$MagicCardImpl with DiagnosticableTreeMixin implements _MagicCard {
 // Gameplay fields
   @override
   final String name;
+  @override
+  @JsonKey(name: 'oracle_text')
+  final String? oracleText;
 // Print fields
 // TODO custom converter and jiffy
   @override
@@ -405,7 +423,7 @@ class _$MagicCardImpl with DiagnosticableTreeMixin implements _MagicCard {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'MagicCard(id: $id, object: $object, oracleId: $oracleId, multiverseIds: $multiverseIds, mtgoId: $mtgoId, tcgplayerId: $tcgplayerId, cardmarketId: $cardmarketId, language: $language, uri: $uri, scryfallUri: $scryfallUri, layout: $layout, name: $name, releasedAt: $releasedAt, highResImage: $highResImage, imageStatus: $imageStatus, imageUris: $imageUris)';
+    return 'MagicCard(id: $id, object: $object, oracleId: $oracleId, multiverseIds: $multiverseIds, mtgoId: $mtgoId, tcgplayerId: $tcgplayerId, cardmarketId: $cardmarketId, language: $language, uri: $uri, scryfallUri: $scryfallUri, layout: $layout, name: $name, oracleText: $oracleText, releasedAt: $releasedAt, highResImage: $highResImage, imageStatus: $imageStatus, imageUris: $imageUris)';
   }
 
   @override
@@ -425,6 +443,7 @@ class _$MagicCardImpl with DiagnosticableTreeMixin implements _MagicCard {
       ..add(DiagnosticsProperty('scryfallUri', scryfallUri))
       ..add(DiagnosticsProperty('layout', layout))
       ..add(DiagnosticsProperty('name', name))
+      ..add(DiagnosticsProperty('oracleText', oracleText))
       ..add(DiagnosticsProperty('releasedAt', releasedAt))
       ..add(DiagnosticsProperty('highResImage', highResImage))
       ..add(DiagnosticsProperty('imageStatus', imageStatus))
@@ -454,6 +473,8 @@ class _$MagicCardImpl with DiagnosticableTreeMixin implements _MagicCard {
                 other.scryfallUri == scryfallUri) &&
             (identical(other.layout, layout) || other.layout == layout) &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.oracleText, oracleText) ||
+                other.oracleText == oracleText) &&
             (identical(other.releasedAt, releasedAt) ||
                 other.releasedAt == releasedAt) &&
             (identical(other.highResImage, highResImage) ||
@@ -480,6 +501,7 @@ class _$MagicCardImpl with DiagnosticableTreeMixin implements _MagicCard {
       scryfallUri,
       layout,
       name,
+      oracleText,
       releasedAt,
       highResImage,
       imageStatus,
@@ -513,6 +535,7 @@ abstract class _MagicCard implements MagicCard {
           @JsonKey(name: 'scryfall_uri') required final Uri scryfallUri,
           required final String layout,
           required final String name,
+          @JsonKey(name: 'oracle_text') final String? oracleText,
           @JsonKey(name: 'released_at') required final String releasedAt,
           @JsonKey(name: 'highres_image') required final bool highResImage,
           @JsonKey(name: 'image_status')
@@ -555,6 +578,9 @@ abstract class _MagicCard implements MagicCard {
   String get layout;
   @override // Gameplay fields
   String get name;
+  @override
+  @JsonKey(name: 'oracle_text')
+  String? get oracleText;
   @override // Print fields
 // TODO custom converter and jiffy
   @JsonKey(name: 'released_at')
