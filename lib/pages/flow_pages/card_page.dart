@@ -1,4 +1,4 @@
-import 'package:card_marketplace/api/client.dart';
+import 'package:card_marketplace/api/card_client.dart';
 import 'package:card_marketplace/components/async_builder.dart';
 import 'package:card_marketplace/components/custom_app_bar.dart';
 import 'package:card_marketplace/models/magic_card.dart';
@@ -17,7 +17,7 @@ class _MagicCardPageState extends State<MagicCardPage> {
   @override
   Widget build(BuildContext context) {
     Dio dio = Dio();
-    final client = RestClient(dio);
+    final client = CardClient(dio);
     return SimpleAsyncBuilder(
       future: client.getCardById(widget.id),
       onLoad: (MagicCard data, BuildContext context) => CustomAppBar(
