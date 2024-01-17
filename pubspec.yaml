@@ -48,6 +48,7 @@ dependencies:
   package_info_plus: ^5.0.1
   retrofit: ^4.0.3
   dio: ^5.4.0
+  flutter_svg: ^1.1.6
 
 dev_dependencies:
   flutter_test:

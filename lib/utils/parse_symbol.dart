@@ -3,10 +3,12 @@ import 'package:card_marketplace/models/list_wrapper.dart';
 import 'package:card_marketplace/models/symbol.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ParseSymbol {
   static final ParseSymbol _instance = ParseSymbol._internal();
   static late SymbolClient _client;
+  static late ListWrapper<CardSymbol> _symbols;
 
   factory ParseSymbol() {
     return _instance;
@@ -18,16 +20,20 @@ class ParseSymbol {
   }
 
   Future<List<Widget>> parseSymbols(String oracleText) async {
-    ListWrapper<CardSymbol> symbols = await _client.getSymbols();
+    _symbols = _symbols ?? await _client.getSymbols();
     List<Widget> parsedSymbols = List.empty();
 
-    for (CardSymbol symbol in symbols.data) {
+    for (CardSymbol symbol in _symbols.data) {
       if (oracleText.contains(symbol.symbol) && symbol.svgUri != null) {
-        parsedSymbols.add(
-          Image.network(symbol.svgUri!.toString()),
-        );
+        // Get index of symbol
         int index = oracleText.indexOf(symbol.symbol);
-        parsedSymbols.add(Text(oracleText.substring(index, index + 3)));
+        if () {
+
+        }
+        // Add check if there is text before
+        parsedSymbols.add(SvgPicture.network(symbol.svgUri!.toString()));
+        parsedSymbols.add(Text(oracleText.substring(index, index + 2)));
+        // remove symbol from text
         oracleText.replaceFirst(symbol.symbol, '');
       }
     }
