@@ -21,7 +21,7 @@ class ParseSymbol {
 
   Future<List<Widget>> parseSymbols(String oracleText) async {
     _symbols = _symbols ?? await _client.getSymbols();
-    List<Widget> parsedSymbols = List.empty();
+    List<Widget> parsedSymbols = List.empty(growable: true);
     int lastFoundSymbol = 0;
     // {w} blah blah
     // {w} blah blah {g}
@@ -37,12 +37,18 @@ class ParseSymbol {
           oracleText = oracleText.substring(lastFoundSymbol, oracleText.length);
         }
         // Add svg
-        parsedSymbols.add(SvgPicture.network(symbol.svgUri!.toString()));
+        parsedSymbols.add(
+          SvgPicture.network(
+            symbol.svgUri!.toString(),
+            width: 15,
+            height: 15,
+          ),
+        );
         // Add text after symbol
         oracleText = oracleText.substring(index + 3, oracleText.length);
       }
-      parsedSymbols.add(Text(oracleText));
     }
+    parsedSymbols.add(Text(oracleText));
     return parsedSymbols;
   }
 }

@@ -61,7 +61,7 @@ class _MagicCardPageState extends State<MagicCardPage> {
             ),
             Container(
               height: 200,
-              width: 600,
+              width: 950,
               decoration: const BoxDecoration(
                   border: Border.symmetric(
                     vertical: BorderSide(color: Colors.black45),
@@ -72,7 +72,12 @@ class _MagicCardPageState extends State<MagicCardPage> {
                   child: data.oracleText != null
                       ? SimpleAsyncBuilder(
                           future: symbolParser.parseSymbols(data.oracleText!),
-                          onLoad: (data, context) => data)
+                          onLoad: (data, context) => Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Wrap(
+                                  children: data,
+                                ),
+                              ))
                       : Text('vanilla creature')),
             ),
           ],

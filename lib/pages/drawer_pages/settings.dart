@@ -37,7 +37,7 @@ class _SettingsState extends State<Settings> {
             ListTile(
               title: I18nText('settings.language'),
               trailing: DropdownButton<String>(
-                  value: pref.getString('locale'),
+                  value: pref.getString('locale') ?? 'en',
                   items: const [
                     Locale('nl'),
                     Locale('es'),

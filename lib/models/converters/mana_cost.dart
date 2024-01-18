@@ -6,7 +6,7 @@ class ManaCost extends JsonConverter<double, String> {
   @override
   double fromJson(String json) {
     if (json.isNotEmpty && !json.contains("Infinity")) {
-      return double.parse(json);
+      return double.tryParse(json.toString()) ?? 0.0;
     }
     return 0.0;
   }

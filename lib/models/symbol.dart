@@ -17,7 +17,7 @@ class CardSymbol with _$CardSymbol {
     @JsonKey(name: 'loose_variant') String? looseVariant,
     required String english,
     @JsonKey(name: 'represents_mana') required bool representsMana,
-    @ManaCost() @JsonKey(name: 'mana_value') double? manaValue,
+    @JsonKey(name: 'mana_value') double? manaValue,
     @JsonKey(name: 'appears_in_mana_costs') required bool appearsInManaCosts,
     required bool funny,
     required List<String>? colors,

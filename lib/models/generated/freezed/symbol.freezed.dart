@@ -29,7 +29,6 @@ mixin _$CardSymbol {
   String get english => throw _privateConstructorUsedError;
   @JsonKey(name: 'represents_mana')
   bool get representsMana => throw _privateConstructorUsedError;
-  @ManaCost()
   @JsonKey(name: 'mana_value')
   double? get manaValue => throw _privateConstructorUsedError;
   @JsonKey(name: 'appears_in_mana_costs')
@@ -60,7 +59,7 @@ abstract class $CardSymbolCopyWith<$Res> {
       @JsonKey(name: 'loose_variant') String? looseVariant,
       String english,
       @JsonKey(name: 'represents_mana') bool representsMana,
-      @ManaCost() @JsonKey(name: 'mana_value') double? manaValue,
+      @JsonKey(name: 'mana_value') double? manaValue,
       @JsonKey(name: 'appears_in_mana_costs') bool appearsInManaCosts,
       bool funny,
       List<String>? colors,
@@ -168,7 +167,7 @@ abstract class _$$CardSymbolImplCopyWith<$Res>
       @JsonKey(name: 'loose_variant') String? looseVariant,
       String english,
       @JsonKey(name: 'represents_mana') bool representsMana,
-      @ManaCost() @JsonKey(name: 'mana_value') double? manaValue,
+      @JsonKey(name: 'mana_value') double? manaValue,
       @JsonKey(name: 'appears_in_mana_costs') bool appearsInManaCosts,
       bool funny,
       List<String>? colors,
@@ -269,7 +268,7 @@ class _$CardSymbolImpl with DiagnosticableTreeMixin implements _CardSymbol {
       @JsonKey(name: 'loose_variant') this.looseVariant,
       required this.english,
       @JsonKey(name: 'represents_mana') required this.representsMana,
-      @ManaCost() @JsonKey(name: 'mana_value') this.manaValue,
+      @JsonKey(name: 'mana_value') this.manaValue,
       @JsonKey(name: 'appears_in_mana_costs') required this.appearsInManaCosts,
       required this.funny,
       required final List<String>? colors,
@@ -299,7 +298,6 @@ class _$CardSymbolImpl with DiagnosticableTreeMixin implements _CardSymbol {
   @JsonKey(name: 'represents_mana')
   final bool representsMana;
   @override
-  @ManaCost()
   @JsonKey(name: 'mana_value')
   final double? manaValue;
   @override
@@ -424,7 +422,7 @@ abstract class _CardSymbol implements CardSymbol {
       @JsonKey(name: 'loose_variant') final String? looseVariant,
       required final String english,
       @JsonKey(name: 'represents_mana') required final bool representsMana,
-      @ManaCost() @JsonKey(name: 'mana_value') final double? manaValue,
+      @JsonKey(name: 'mana_value') final double? manaValue,
       @JsonKey(name: 'appears_in_mana_costs')
       required final bool appearsInManaCosts,
       required final bool funny,
@@ -453,7 +451,6 @@ abstract class _CardSymbol implements CardSymbol {
   @JsonKey(name: 'represents_mana')
   bool get representsMana;
   @override
-  @ManaCost()
   @JsonKey(name: 'mana_value')
   double? get manaValue;
   @override
