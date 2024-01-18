@@ -1,6 +1,7 @@
 // ignore: unused_import
 // ignore_for_file: invalid_annotation_target
 
+import 'package:card_marketplace/models/converters/mana_cost.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -16,13 +17,13 @@ class CardSymbol with _$CardSymbol {
     @JsonKey(name: 'loose_variant') String? looseVariant,
     required String english,
     @JsonKey(name: 'represents_mana') required bool representsMana,
-    @JsonKey(name: 'mana_value') String? manaValue,
+    @ManaCost() @JsonKey(name: 'mana_value') double? manaValue,
     @JsonKey(name: 'appears_in_mana_costs') required bool appearsInManaCosts,
     required bool funny,
-    required List<String> colors,
+    required List<String>? colors,
     required bool hybrid,
     required bool phyrexian,
-    @JsonKey(name: 'gatherer_alternates') String? gathererAlternates,
+    @JsonKey(name: 'gatherer_alternates') List<String>? gathererAlternates,
   }) = _CardSymbol;
 
   factory CardSymbol.fromJson(Map<String, Object?> json) =>

@@ -8,7 +8,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 class ParseSymbol {
   static final ParseSymbol _instance = ParseSymbol._internal();
   static late SymbolClient _client;
-  static late ListWrapper<CardSymbol> _symbols;
+  static ListWrapper<CardSymbol>? _symbols;
 
   factory ParseSymbol() {
     return _instance;
@@ -22,20 +22,26 @@ class ParseSymbol {
   Future<List<Widget>> parseSymbols(String oracleText) async {
     _symbols = _symbols ?? await _client.getSymbols();
     List<Widget> parsedSymbols = List.empty();
-
-    for (CardSymbol symbol in _symbols.data) {
+    int lastFoundSymbol = 0;
+    // {w} blah blah
+    // {w} blah blah {g}
+    for (CardSymbol symbol in _symbols!.data) {
       if (oracleText.contains(symbol.symbol) && symbol.svgUri != null) {
         // Get index of symbol
         int index = oracleText.indexOf(symbol.symbol);
-        if () {
-
+        // Text before if so add it
+        if (index > 0) {
+          // Index
+          parsedSymbols.add(Text(oracleText.substring(lastFoundSymbol, index)));
+          lastFoundSymbol = index + 2;
+          oracleText = oracleText.substring(lastFoundSymbol, oracleText.length);
         }
-        // Add check if there is text before
+        // Add svg
         parsedSymbols.add(SvgPicture.network(symbol.svgUri!.toString()));
-        parsedSymbols.add(Text(oracleText.substring(index, index + 2)));
-        // remove symbol from text
-        oracleText.replaceFirst(symbol.symbol, '');
+        // Add text after symbol
+        oracleText = oracleText.substring(index + 3, oracleText.length);
       }
+      parsedSymbols.add(Text(oracleText));
     }
     return parsedSymbols;
   }

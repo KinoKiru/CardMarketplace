@@ -15,14 +15,17 @@ _$CardSymbolImpl _$$CardSymbolImplFromJson(Map<String, dynamic> json) =>
       looseVariant: json['loose_variant'] as String?,
       english: json['english'] as String,
       representsMana: json['represents_mana'] as bool,
-      manaValue: json['mana_value'] as String?,
+      manaValue: _$JsonConverterFromJson<String, double>(
+          json['mana_value'], const ManaCost().fromJson),
       appearsInManaCosts: json['appears_in_mana_costs'] as bool,
       funny: json['funny'] as bool,
       colors:
-          (json['colors'] as List<dynamic>).map((e) => e as String).toList(),
+          (json['colors'] as List<dynamic>?)?.map((e) => e as String).toList(),
       hybrid: json['hybrid'] as bool,
       phyrexian: json['phyrexian'] as bool,
-      gathererAlternates: json['gatherer_alternates'] as String?,
+      gathererAlternates: (json['gatherer_alternates'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
     );
 
 Map<String, dynamic> _$$CardSymbolImplToJson(_$CardSymbolImpl instance) =>
@@ -33,7 +36,8 @@ Map<String, dynamic> _$$CardSymbolImplToJson(_$CardSymbolImpl instance) =>
       'loose_variant': instance.looseVariant,
       'english': instance.english,
       'represents_mana': instance.representsMana,
-      'mana_value': instance.manaValue,
+      'mana_value': _$JsonConverterToJson<String, double>(
+          instance.manaValue, const ManaCost().toJson),
       'appears_in_mana_costs': instance.appearsInManaCosts,
       'funny': instance.funny,
       'colors': instance.colors,
@@ -41,3 +45,15 @@ Map<String, dynamic> _$$CardSymbolImplToJson(_$CardSymbolImpl instance) =>
       'phyrexian': instance.phyrexian,
       'gatherer_alternates': instance.gathererAlternates,
     };
+
+Value? _$JsonConverterFromJson<Json, Value>(
+  Object? json,
+  Value? Function(Json json) fromJson,
+) =>
+    json == null ? null : fromJson(json as Json);
+
+Json? _$JsonConverterToJson<Json, Value>(
+  Value? value,
+  Json? Function(Value value) toJson,
+) =>
+    value == null ? null : toJson(value);

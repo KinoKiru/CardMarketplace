@@ -2,6 +2,7 @@ import 'package:card_marketplace/api/card_client.dart';
 import 'package:card_marketplace/components/async_builder.dart';
 import 'package:card_marketplace/components/custom_app_bar.dart';
 import 'package:card_marketplace/models/magic_card.dart';
+import 'package:card_marketplace/utils/parse_symbol.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
@@ -14,6 +15,7 @@ class MagicCardPage extends StatefulWidget {
 }
 
 class _MagicCardPageState extends State<MagicCardPage> {
+  ParseSymbol symbolParser = ParseSymbol();
   @override
   Widget build(BuildContext context) {
     Dio dio = Dio();
@@ -67,10 +69,11 @@ class _MagicCardPageState extends State<MagicCardPage> {
                   ),
                   borderRadius: BorderRadius.all(Radius.circular(10))),
               child: Center(
-                child: Text(
-                  data.oracleText ?? 'Vanilla creature',
-                ),
-              ),
+                  child: data.oracleText != null
+                      ? SimpleAsyncBuilder(
+                          future: symbolParser.parseSymbols(data.oracleText!),
+                          onLoad: (data, context) => data)
+                      : Text('vanilla creature')),
             ),
           ],
         ),

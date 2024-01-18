@@ -29,16 +29,17 @@ mixin _$CardSymbol {
   String get english => throw _privateConstructorUsedError;
   @JsonKey(name: 'represents_mana')
   bool get representsMana => throw _privateConstructorUsedError;
+  @ManaCost()
   @JsonKey(name: 'mana_value')
-  String? get manaValue => throw _privateConstructorUsedError;
+  double? get manaValue => throw _privateConstructorUsedError;
   @JsonKey(name: 'appears_in_mana_costs')
   bool get appearsInManaCosts => throw _privateConstructorUsedError;
   bool get funny => throw _privateConstructorUsedError;
-  List<String> get colors => throw _privateConstructorUsedError;
+  List<String>? get colors => throw _privateConstructorUsedError;
   bool get hybrid => throw _privateConstructorUsedError;
   bool get phyrexian => throw _privateConstructorUsedError;
   @JsonKey(name: 'gatherer_alternates')
-  String? get gathererAlternates => throw _privateConstructorUsedError;
+  List<String>? get gathererAlternates => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -59,13 +60,13 @@ abstract class $CardSymbolCopyWith<$Res> {
       @JsonKey(name: 'loose_variant') String? looseVariant,
       String english,
       @JsonKey(name: 'represents_mana') bool representsMana,
-      @JsonKey(name: 'mana_value') String? manaValue,
+      @ManaCost() @JsonKey(name: 'mana_value') double? manaValue,
       @JsonKey(name: 'appears_in_mana_costs') bool appearsInManaCosts,
       bool funny,
-      List<String> colors,
+      List<String>? colors,
       bool hybrid,
       bool phyrexian,
-      @JsonKey(name: 'gatherer_alternates') String? gathererAlternates});
+      @JsonKey(name: 'gatherer_alternates') List<String>? gathererAlternates});
 }
 
 /// @nodoc
@@ -90,7 +91,7 @@ class _$CardSymbolCopyWithImpl<$Res, $Val extends CardSymbol>
     Object? manaValue = freezed,
     Object? appearsInManaCosts = null,
     Object? funny = null,
-    Object? colors = null,
+    Object? colors = freezed,
     Object? hybrid = null,
     Object? phyrexian = null,
     Object? gathererAlternates = freezed,
@@ -123,7 +124,7 @@ class _$CardSymbolCopyWithImpl<$Res, $Val extends CardSymbol>
       manaValue: freezed == manaValue
           ? _value.manaValue
           : manaValue // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as double?,
       appearsInManaCosts: null == appearsInManaCosts
           ? _value.appearsInManaCosts
           : appearsInManaCosts // ignore: cast_nullable_to_non_nullable
@@ -132,10 +133,10 @@ class _$CardSymbolCopyWithImpl<$Res, $Val extends CardSymbol>
           ? _value.funny
           : funny // ignore: cast_nullable_to_non_nullable
               as bool,
-      colors: null == colors
+      colors: freezed == colors
           ? _value.colors
           : colors // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<String>?,
       hybrid: null == hybrid
           ? _value.hybrid
           : hybrid // ignore: cast_nullable_to_non_nullable
@@ -147,7 +148,7 @@ class _$CardSymbolCopyWithImpl<$Res, $Val extends CardSymbol>
       gathererAlternates: freezed == gathererAlternates
           ? _value.gathererAlternates
           : gathererAlternates // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as List<String>?,
     ) as $Val);
   }
 }
@@ -167,13 +168,13 @@ abstract class _$$CardSymbolImplCopyWith<$Res>
       @JsonKey(name: 'loose_variant') String? looseVariant,
       String english,
       @JsonKey(name: 'represents_mana') bool representsMana,
-      @JsonKey(name: 'mana_value') String? manaValue,
+      @ManaCost() @JsonKey(name: 'mana_value') double? manaValue,
       @JsonKey(name: 'appears_in_mana_costs') bool appearsInManaCosts,
       bool funny,
-      List<String> colors,
+      List<String>? colors,
       bool hybrid,
       bool phyrexian,
-      @JsonKey(name: 'gatherer_alternates') String? gathererAlternates});
+      @JsonKey(name: 'gatherer_alternates') List<String>? gathererAlternates});
 }
 
 /// @nodoc
@@ -196,7 +197,7 @@ class __$$CardSymbolImplCopyWithImpl<$Res>
     Object? manaValue = freezed,
     Object? appearsInManaCosts = null,
     Object? funny = null,
-    Object? colors = null,
+    Object? colors = freezed,
     Object? hybrid = null,
     Object? phyrexian = null,
     Object? gathererAlternates = freezed,
@@ -229,7 +230,7 @@ class __$$CardSymbolImplCopyWithImpl<$Res>
       manaValue: freezed == manaValue
           ? _value.manaValue
           : manaValue // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as double?,
       appearsInManaCosts: null == appearsInManaCosts
           ? _value.appearsInManaCosts
           : appearsInManaCosts // ignore: cast_nullable_to_non_nullable
@@ -238,10 +239,10 @@ class __$$CardSymbolImplCopyWithImpl<$Res>
           ? _value.funny
           : funny // ignore: cast_nullable_to_non_nullable
               as bool,
-      colors: null == colors
+      colors: freezed == colors
           ? _value._colors
           : colors // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<String>?,
       hybrid: null == hybrid
           ? _value.hybrid
           : hybrid // ignore: cast_nullable_to_non_nullable
@@ -251,9 +252,9 @@ class __$$CardSymbolImplCopyWithImpl<$Res>
           : phyrexian // ignore: cast_nullable_to_non_nullable
               as bool,
       gathererAlternates: freezed == gathererAlternates
-          ? _value.gathererAlternates
+          ? _value._gathererAlternates
           : gathererAlternates // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as List<String>?,
     ));
   }
 }
@@ -268,14 +269,16 @@ class _$CardSymbolImpl with DiagnosticableTreeMixin implements _CardSymbol {
       @JsonKey(name: 'loose_variant') this.looseVariant,
       required this.english,
       @JsonKey(name: 'represents_mana') required this.representsMana,
-      @JsonKey(name: 'mana_value') this.manaValue,
+      @ManaCost() @JsonKey(name: 'mana_value') this.manaValue,
       @JsonKey(name: 'appears_in_mana_costs') required this.appearsInManaCosts,
       required this.funny,
-      required final List<String> colors,
+      required final List<String>? colors,
       required this.hybrid,
       required this.phyrexian,
-      @JsonKey(name: 'gatherer_alternates') this.gathererAlternates})
-      : _colors = colors;
+      @JsonKey(name: 'gatherer_alternates')
+      final List<String>? gathererAlternates})
+      : _colors = colors,
+        _gathererAlternates = gathererAlternates;
 
   factory _$CardSymbolImpl.fromJson(Map<String, dynamic> json) =>
       _$$CardSymbolImplFromJson(json);
@@ -296,28 +299,39 @@ class _$CardSymbolImpl with DiagnosticableTreeMixin implements _CardSymbol {
   @JsonKey(name: 'represents_mana')
   final bool representsMana;
   @override
+  @ManaCost()
   @JsonKey(name: 'mana_value')
-  final String? manaValue;
+  final double? manaValue;
   @override
   @JsonKey(name: 'appears_in_mana_costs')
   final bool appearsInManaCosts;
   @override
   final bool funny;
-  final List<String> _colors;
+  final List<String>? _colors;
   @override
-  List<String> get colors {
+  List<String>? get colors {
+    final value = _colors;
+    if (value == null) return null;
     if (_colors is EqualUnmodifiableListView) return _colors;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_colors);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
   final bool hybrid;
   @override
   final bool phyrexian;
+  final List<String>? _gathererAlternates;
   @override
   @JsonKey(name: 'gatherer_alternates')
-  final String? gathererAlternates;
+  List<String>? get gathererAlternates {
+    final value = _gathererAlternates;
+    if (value == null) return null;
+    if (_gathererAlternates is EqualUnmodifiableListView)
+      return _gathererAlternates;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -366,8 +380,8 @@ class _$CardSymbolImpl with DiagnosticableTreeMixin implements _CardSymbol {
             (identical(other.hybrid, hybrid) || other.hybrid == hybrid) &&
             (identical(other.phyrexian, phyrexian) ||
                 other.phyrexian == phyrexian) &&
-            (identical(other.gathererAlternates, gathererAlternates) ||
-                other.gathererAlternates == gathererAlternates));
+            const DeepCollectionEquality()
+                .equals(other._gathererAlternates, _gathererAlternates));
   }
 
   @JsonKey(ignore: true)
@@ -386,7 +400,7 @@ class _$CardSymbolImpl with DiagnosticableTreeMixin implements _CardSymbol {
       const DeepCollectionEquality().hash(_colors),
       hybrid,
       phyrexian,
-      gathererAlternates);
+      const DeepCollectionEquality().hash(_gathererAlternates));
 
   @JsonKey(ignore: true)
   @override
@@ -410,15 +424,15 @@ abstract class _CardSymbol implements CardSymbol {
       @JsonKey(name: 'loose_variant') final String? looseVariant,
       required final String english,
       @JsonKey(name: 'represents_mana') required final bool representsMana,
-      @JsonKey(name: 'mana_value') final String? manaValue,
+      @ManaCost() @JsonKey(name: 'mana_value') final double? manaValue,
       @JsonKey(name: 'appears_in_mana_costs')
       required final bool appearsInManaCosts,
       required final bool funny,
-      required final List<String> colors,
+      required final List<String>? colors,
       required final bool hybrid,
       required final bool phyrexian,
       @JsonKey(name: 'gatherer_alternates')
-      final String? gathererAlternates}) = _$CardSymbolImpl;
+      final List<String>? gathererAlternates}) = _$CardSymbolImpl;
 
   factory _CardSymbol.fromJson(Map<String, dynamic> json) =
       _$CardSymbolImpl.fromJson;
@@ -439,22 +453,23 @@ abstract class _CardSymbol implements CardSymbol {
   @JsonKey(name: 'represents_mana')
   bool get representsMana;
   @override
+  @ManaCost()
   @JsonKey(name: 'mana_value')
-  String? get manaValue;
+  double? get manaValue;
   @override
   @JsonKey(name: 'appears_in_mana_costs')
   bool get appearsInManaCosts;
   @override
   bool get funny;
   @override
-  List<String> get colors;
+  List<String>? get colors;
   @override
   bool get hybrid;
   @override
   bool get phyrexian;
   @override
   @JsonKey(name: 'gatherer_alternates')
-  String? get gathererAlternates;
+  List<String>? get gathererAlternates;
   @override
   @JsonKey(ignore: true)
   _$$CardSymbolImplCopyWith<_$CardSymbolImpl> get copyWith =>
