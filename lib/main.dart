@@ -17,6 +17,7 @@ void main() async {
   ));
 }
 
+// ignore: must_be_immutable
 class App extends StatefulWidget {
   App({super.key, required this.locale, required this.isDarkMode});
   String locale;

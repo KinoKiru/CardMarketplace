@@ -22,33 +22,25 @@ class ParseSymbol {
   Future<List<Widget>> parseSymbols(String oracleText) async {
     _symbols = _symbols ?? await _client.getSymbols();
     List<Widget> parsedSymbols = List.empty(growable: true);
-    int lastFoundSymbol = 0;
-    // {w} blah blah
-    // {w} blah blah {g}
-    for (CardSymbol symbol in _symbols!.data) {
-      if (oracleText.contains(symbol.symbol) && symbol.svgUri != null) {
-        // Get index of symbol
-        int index = oracleText.indexOf(symbol.symbol);
-        // Text before if so add it
-        if (index > 0) {
-          // Index
-          parsedSymbols.add(Text(oracleText.substring(lastFoundSymbol, index)));
-          lastFoundSymbol = index + 2;
-          oracleText = oracleText.substring(lastFoundSymbol, oracleText.length);
+
+    List<String> text = oracleText.split(RegExp(r'{|}'));
+    for (int i = 0; i < text.length; i++) {
+      if (text[i].trim().isNotEmpty) {
+        if (i % 2 == 1) {
+          CardSymbol symbol = _symbols!.data
+              .firstWhere((element) => element.symbol == "{${text[i]}}");
+          parsedSymbols.add(
+            SvgPicture.network(
+              symbol.svgUri!.toString(),
+              width: 15,
+              height: 15,
+            ),
+          );
+        } else {
+          parsedSymbols.add(Text(text[i].trim()));
         }
-        // Add svg
-        parsedSymbols.add(
-          SvgPicture.network(
-            symbol.svgUri!.toString(),
-            width: 15,
-            height: 15,
-          ),
-        );
-        // Add text after symbol
-        oracleText = oracleText.substring(index + 3, oracleText.length);
       }
     }
-    parsedSymbols.add(Text(oracleText));
     return parsedSymbols;
   }
 }
