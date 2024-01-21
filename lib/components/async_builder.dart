@@ -1,13 +1,13 @@
-import 'package:card_marketplace/pages/loading.dart';
+import 'package:card_marketplace/components/loading.dart';
 import 'package:flutter/material.dart';
-import 'package:card_marketplace/pages/error.dart';
+import 'package:card_marketplace/pages/error_page.dart';
 
 /// SimpleAsyncBuilder
 /// Used when data needs to be awaited but not checked.
 class SimpleAsyncBuilder<T> extends StatefulWidget {
   const SimpleAsyncBuilder(
       {super.key, required this.future, required this.onLoad});
-  final Future<T>? future;
+  final Future<T> future;
   final Function(T data, BuildContext context) onLoad;
 
   @override
@@ -23,6 +23,7 @@ class _SimpleAsyncBuilderState<T> extends State<SimpleAsyncBuilder<T>> {
         if (snapshot.hasData) {
           return widget.onLoad(snapshot.requireData, context);
         } else if (snapshot.hasError) {
+          print(snapshot.error);
           return ErrorPage(error: '${snapshot.error}');
         } else {
           return const Loading();

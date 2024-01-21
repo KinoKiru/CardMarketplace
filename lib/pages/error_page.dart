@@ -8,6 +8,7 @@ class ErrorPage extends StatefulWidget {
   State<ErrorPage> createState() => _ErrorPageState();
 }
 
+//TODO page or component?
 class _ErrorPageState extends State<ErrorPage> {
   @override
   Widget build(BuildContext context) {

@@ -1,50 +1,60 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of '../../card.dart';
+part of '../../magic_card.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CardImpl _$$CardImplFromJson(Map<String, dynamic> json) => _$CardImpl(
+_$MagicCardImpl _$$MagicCardImplFromJson(Map<String, dynamic> json) =>
+    _$MagicCardImpl(
       id: const UUID().fromJson(json['id'] as String),
-      type: json['object'] as String,
+      object: json['object'] as String,
       oracleId: _$JsonConverterFromJson<String, String>(
           json['oracleId'], const UUID().fromJson),
       multiverseIds: (json['multiverseIds'] as List<dynamic>?)
           ?.map((e) => e as int)
           .toList(),
-      mtgoId: json['mtgoId'] as int?,
-      tcgplayerId: json['tcgplayerId'] as int?,
-      cardmarketId: json['cardmarketId'] as int?,
+      mtgoId: json['mtgo_id'] as int?,
+      tcgplayerId: json['tcgplayer_id'] as int?,
+      cardmarketId: json['cardmarket_id'] as int?,
       language: json['lang'] as String,
       uri: Uri.parse(json['uri'] as String),
-      scryfallUri: Uri.parse(json['scryfallUri'] as String),
+      scryfallUri: Uri.parse(json['scryfall_uri'] as String),
       layout: json['layout'] as String,
       name: json['name'] as String,
-      releasedAt: DateTime.parse(json['releasedAt'] as String),
+      oracleText: json['oracle_text'] as String?,
+      releasedAt: json['released_at'] as String,
       highResImage: json['highres_image'] as bool,
-      imageStatus: $enumDecode(_$ImageStatusEnumMap, json['imageStatus']),
+      imageStatus: $enumDecode(_$ImageStatusEnumMap, json['image_status']),
+      imageUris: json['image_uris'] == null
+          ? null
+          : ImageUris.fromJson(json['image_uris'] as Map<String, dynamic>),
+      defaultImage: json['defaultImage'] as String? ??
+          "https://i0.wp.com/mastare.nl/wp-content/uploads/2023/01/placeholder-285.png?ssl=1",
     );
 
-Map<String, dynamic> _$$CardImplToJson(_$CardImpl instance) =>
+Map<String, dynamic> _$$MagicCardImplToJson(_$MagicCardImpl instance) =>
     <String, dynamic>{
       'id': const UUID().toJson(instance.id),
-      'object': instance.type,
+      'object': instance.object,
       'oracleId': _$JsonConverterToJson<String, String>(
           instance.oracleId, const UUID().toJson),
       'multiverseIds': instance.multiverseIds,
-      'mtgoId': instance.mtgoId,
-      'tcgplayerId': instance.tcgplayerId,
-      'cardmarketId': instance.cardmarketId,
+      'mtgo_id': instance.mtgoId,
+      'tcgplayer_id': instance.tcgplayerId,
+      'cardmarket_id': instance.cardmarketId,
       'lang': instance.language,
       'uri': instance.uri.toString(),
-      'scryfallUri': instance.scryfallUri.toString(),
+      'scryfall_uri': instance.scryfallUri.toString(),
       'layout': instance.layout,
       'name': instance.name,
-      'releasedAt': instance.releasedAt.toIso8601String(),
+      'oracle_text': instance.oracleText,
+      'released_at': instance.releasedAt,
       'highres_image': instance.highResImage,
-      'imageStatus': _$ImageStatusEnumMap[instance.imageStatus]!,
+      'image_status': _$ImageStatusEnumMap[instance.imageStatus]!,
+      'image_uris': instance.imageUris,
+      'defaultImage': instance.defaultImage,
     };
 
 Value? _$JsonConverterFromJson<Json, Value>(

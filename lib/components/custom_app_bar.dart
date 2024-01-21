@@ -24,15 +24,17 @@ class CustomAppBar extends StatefulWidget {
 class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: I18nText(widget.title),
-        centerTitle: false,
-        actions: widget.appBarActions,
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: I18nText(widget.title),
+          centerTitle: false,
+          actions: widget.appBarActions,
+        ),
+        body: widget.body,
+        endDrawer: widget.enableDrawer ? const CustomNavigationDrawer() : null,
+        floatingActionButton: widget.floatingActionButton,
       ),
-      body: widget.body,
-      endDrawer: widget.enableDrawer ? const CustomNavigationDrawer() : null,
-      floatingActionButton: widget.floatingActionButton,
     );
   }
 }

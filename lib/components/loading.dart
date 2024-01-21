@@ -31,19 +31,17 @@ class _LoadingState extends State<Loading> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            CircularProgressIndicator(
-              color: const Color.fromARGB(255, 155, 196, 179),
-              value: controller.value,
-              semanticsLabel: 'Circular progress indicator',
-            ),
-          ],
-        ),
+    return Center(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          CircularProgressIndicator(
+            color: const Color.fromARGB(255, 155, 196, 179),
+            value: controller.value,
+            semanticsLabel: 'Circular progress indicator',
+          ),
+        ],
       ),
     );
   }

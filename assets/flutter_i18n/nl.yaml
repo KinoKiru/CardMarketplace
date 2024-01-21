@@ -21,3 +21,7 @@ settings:
 search:
   title: Kaarten index
   searchBar: Welke kaart zoek je?
+  empty: Begin met typen om resultaten te zien
+sheet:
+  copied: Url gekopieerd
+  share: Delen
