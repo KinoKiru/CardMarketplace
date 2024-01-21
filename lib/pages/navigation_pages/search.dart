@@ -64,11 +64,14 @@ class _SearchState extends State<Search> {
                   onLoad: (ListWrapper<MagicCard> matchedCards,
                           BuildContext context) =>
                       Expanded(
-                    child: ListView.builder(
-                      itemCount: matchedCards.data.length,
-                      padding: EdgeInsets.zero,
-                      itemBuilder: (BuildContext context, int index) =>
-                          CardSearchListItem(card: matchedCards.data[index]),
+                    child: GridView.count(
+                      crossAxisCount: 2,
+                      children: List.generate(
+                        matchedCards.data.length,
+                        (index) => CardSearchListItem(
+                          card: matchedCards.data[index],
+                        ),
+                      ),
                     ),
                   ),
                 )

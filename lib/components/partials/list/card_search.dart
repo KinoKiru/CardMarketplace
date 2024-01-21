@@ -15,21 +15,22 @@ class CardSearchListItem extends StatelessWidget {
           builder: (BuildContext context) => MagicCardPage(id: card.id),
         ),
       ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Image.network(
-              card.imageUris != null
-                  ? card.imageUris!.artCrop.toString()
-                  : card.imageUris!.normal.toString(),
-              width: 150,
-              height: 115,
-            ),
-            Text(card.name),
-            Text(card.releasedAt)
-          ],
+      child: SizedBox(
+        height: 500,
+        child: Card(
+          clipBehavior: Clip.hardEdge,
+          child: Column(
+            children: [
+              Image.network(
+                card.imageUris!.artCrop.toString(),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: Text(card.name),
+              ),
+              Text(card.releasedAt)
+            ],
+          ),
         ),
       ),
     );
