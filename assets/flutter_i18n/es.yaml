@@ -22,3 +22,6 @@ search:
   searchBar: ¿Qué tarjeta estás buscando?
   title: Fichero
   empty: Empieza a escribir para ver los resultados.
+sheet:
+  copied: URL copiada
+  share: Para compartir

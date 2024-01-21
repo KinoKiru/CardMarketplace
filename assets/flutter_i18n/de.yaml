@@ -22,3 +22,6 @@ search:
   searchBar: Welche Karte suchen Sie?
   title: Kartei
   empty: Beginnen Sie mit der Eingabe, um Ergebnisse zu sehen
+sheet:
+  copied: URL kopiert
+  share: Teilen

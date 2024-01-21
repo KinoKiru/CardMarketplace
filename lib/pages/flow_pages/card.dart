@@ -1,10 +1,13 @@
 import 'package:card_marketplace/api/card_client.dart';
 import 'package:card_marketplace/components/async_builder.dart';
+import 'package:card_marketplace/components/bottom_sheet.dart';
 import 'package:card_marketplace/components/custom_app_bar.dart';
 import 'package:card_marketplace/models/magic_card.dart';
 import 'package:card_marketplace/utils/parse_symbol.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:iconify_flutter/iconify_flutter.dart';
+import 'package:iconify_flutter/icons/material_symbols.dart';
 
 class MagicCardPage extends StatefulWidget {
   const MagicCardPage({super.key, required this.id});
@@ -25,6 +28,22 @@ class _MagicCardPageState extends State<MagicCardPage> {
       onLoad: (MagicCard data, BuildContext context) => CustomAppBar(
         title: data.name,
         enableDrawer: false,
+        appBarActions: [
+          InkWell(
+            onTap: () {
+              showModalBottomSheet<void>(
+                context: context,
+                builder: (BuildContext context) => CustomBottomSheet(
+                  copyData: data.uri.toString(),
+                ),
+              );
+            },
+            child: Iconify(
+              MaterialSymbols.more_vert,
+              color: Theme.of(context).colorScheme.onBackground,
+            ),
+          )
+        ],
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -40,7 +59,7 @@ class _MagicCardPageState extends State<MagicCardPage> {
                   stops: const [0.0, 0.9],
                 ).createShader(bounds);
               },
-              blendMode: BlendMode.srcATop,
+              blendMode: BlendMode.hardLight,
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 height: 225,
@@ -57,11 +76,11 @@ class _MagicCardPageState extends State<MagicCardPage> {
               ),
             ),
             const SizedBox(
-              height: 30,
+              height: 15,
             ),
             Container(
               height: 200,
-              width: 950,
+              width: MediaQuery.of(context).size.width * 0.9,
               decoration: const BoxDecoration(
                   border: Border.symmetric(
                     vertical: BorderSide(color: Colors.black45),
@@ -73,12 +92,13 @@ class _MagicCardPageState extends State<MagicCardPage> {
                       ? SimpleAsyncBuilder(
                           future: symbolParser.parseSymbols(data.oracleText!),
                           onLoad: (data, context) => Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Wrap(
-                                  children: data,
-                                ),
-                              ))
-                      : Text('vanilla creature')),
+                            padding: const EdgeInsets.all(8.0),
+                            child: Wrap(
+                              children: data,
+                            ),
+                          ),
+                        )
+                      : const Text('vanilla creature')),
             ),
           ],
         ),

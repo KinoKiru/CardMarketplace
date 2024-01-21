@@ -30,10 +30,13 @@ class ParseSymbol {
           CardSymbol symbol = _symbols!.data
               .firstWhere((element) => element.symbol == "{${text[i]}}");
           parsedSymbols.add(
-            SvgPicture.network(
-              symbol.svgUri!.toString(),
-              width: 15,
-              height: 15,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 3.0),
+              child: SvgPicture.network(
+                symbol.svgUri!.toString(),
+                width: 15,
+                height: 15,
+              ),
             ),
           );
         } else {

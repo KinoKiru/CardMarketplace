@@ -1,7 +1,6 @@
 // ignore: unused_import
 // ignore_for_file: invalid_annotation_target
 
-import 'package:card_marketplace/models/converters/mana_cost.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 

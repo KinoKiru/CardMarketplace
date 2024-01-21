@@ -22,3 +22,6 @@ search:
   searchBar: Which card are you looking for?
   title: Card index
   empty: Start typing to see results
+sheet:
+  copied: URL copied
+  share: To share
