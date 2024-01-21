@@ -36,6 +36,9 @@ class MagicCard with _$MagicCard {
     @JsonKey(name: 'highres_image') required bool highResImage,
     @JsonKey(name: 'image_status') @JsonEnum() required ImageStatus imageStatus,
     @JsonKey(name: 'image_uris') ImageUris? imageUris,
+    @Default(
+        "https://i0.wp.com/mastare.nl/wp-content/uploads/2023/01/placeholder-285.png?ssl=1")
+    String defaultImage,
   }) = _MagicCard;
 
   factory MagicCard.fromJson(Map<String, Object?> json) =>

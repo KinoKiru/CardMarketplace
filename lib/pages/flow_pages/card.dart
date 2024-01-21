@@ -50,7 +50,7 @@ class _MagicCardPageState extends State<MagicCardPage> {
                     image: NetworkImage(
                       data.imageUris != null
                           ? data.imageUris!.artCrop.toString()
-                          : data.imageUris!.large.toString(),
+                          : data.defaultImage.toString(),
                     ),
                   ),
                 ),

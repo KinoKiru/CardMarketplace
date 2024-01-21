@@ -59,12 +59,16 @@ class _SearchState extends State<Search> {
           ),
           query.length >= 3
               ? SimpleAsyncBuilder<ListWrapper<MagicCard>>(
-                  future: client.searchCards(Uri.encodeComponent(
-                      query.replaceAll(RegExp(r'\s+'), ''))),
+                  future: client.searchCards(
+                    Uri.encodeComponent(
+                      query.replaceAll(RegExp(r'\s+'), ''),
+                    ),
+                  ),
                   onLoad: (ListWrapper<MagicCard> matchedCards,
                           BuildContext context) =>
                       Expanded(
                     child: GridView.count(
+                      childAspectRatio: 0.9,
                       crossAxisCount: 2,
                       children: List.generate(
                         matchedCards.data.length,
@@ -75,7 +79,10 @@ class _SearchState extends State<Search> {
                     ),
                   ),
                 )
-              : Text('Zoeken'),
+              : Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: I18nText("search.empty"),
+                ),
         ],
       ),
     );

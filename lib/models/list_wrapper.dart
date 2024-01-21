@@ -7,7 +7,7 @@ part 'generated/freezed/list_wrapper.freezed.dart';
 part 'generated/g/list_wrapper.g.dart';
 
 @Freezed(genericArgumentFactories: true)
-abstract class ListWrapper<T> with _$ListWrapper {
+abstract class ListWrapper<T> with _$ListWrapper<T> {
   // Constructor, includes every field from the scryfall api
   const factory ListWrapper({
     required String object,

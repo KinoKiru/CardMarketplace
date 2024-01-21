@@ -30,6 +30,8 @@ _$MagicCardImpl _$$MagicCardImplFromJson(Map<String, dynamic> json) =>
       imageUris: json['image_uris'] == null
           ? null
           : ImageUris.fromJson(json['image_uris'] as Map<String, dynamic>),
+      defaultImage: json['defaultImage'] as String? ??
+          "https://i0.wp.com/mastare.nl/wp-content/uploads/2023/01/placeholder-285.png?ssl=1",
     );
 
 Map<String, dynamic> _$$MagicCardImplToJson(_$MagicCardImpl instance) =>
@@ -52,6 +54,7 @@ Map<String, dynamic> _$$MagicCardImplToJson(_$MagicCardImpl instance) =>
       'highres_image': instance.highResImage,
       'image_status': _$ImageStatusEnumMap[instance.imageStatus]!,
       'image_uris': instance.imageUris,
+      'defaultImage': instance.defaultImage,
     };
 
 Value? _$JsonConverterFromJson<Json, Value>(
