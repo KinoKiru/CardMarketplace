@@ -53,13 +53,13 @@ class _MagicCardPageState extends State<MagicCardPage> {
                   begin: FractionalOffset.topCenter,
                   end: FractionalOffset.bottomCenter,
                   colors: [
-                    Colors.grey.withOpacity(0.2),
-                    Colors.black,
+                    Theme.of(context).colorScheme.onBackground.withOpacity(0.1),
+                    Colors.black
                   ],
                   stops: const [0.0, 0.9],
                 ).createShader(bounds);
               },
-              blendMode: BlendMode.hardLight,
+              blendMode: BlendMode.srcOver,
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 height: 225,
@@ -71,6 +71,38 @@ class _MagicCardPageState extends State<MagicCardPage> {
                           ? data.imageUris!.artCrop.toString()
                           : data.defaultImage.toString(),
                     ),
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      data.manaCost != null && data.manaCost!.isNotEmpty
+                          ? SimpleAsyncBuilder(
+                              future: symbolParser.parseSymbols(data.manaCost!),
+                              onLoad:
+                                  (List<Widget> data, BuildContext context) =>
+                                      Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Text(
+                                    "Mana cost: ",
+                                    style: TextStyle(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .background,
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                  ...data
+                                ],
+                              ),
+                            )
+                          : const Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [Text("No mana cost")],
+                            )
+                    ],
                   ),
                 ),
               ),

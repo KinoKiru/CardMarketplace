@@ -41,7 +41,9 @@ mixin _$MagicCard {
   String get layout => throw _privateConstructorUsedError; // Gameplay fields
   String get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'oracle_text')
-  String? get oracleText => throw _privateConstructorUsedError; // Print fields
+  String? get oracleText => throw _privateConstructorUsedError;
+  @JsonKey(name: 'mana_cost')
+  String? get manaCost => throw _privateConstructorUsedError; // Print fields
 // TODO custom converter and jiffy
   @JsonKey(name: 'released_at')
   String get releasedAt => throw _privateConstructorUsedError;
@@ -79,6 +81,7 @@ abstract class $MagicCardCopyWith<$Res> {
       String layout,
       String name,
       @JsonKey(name: 'oracle_text') String? oracleText,
+      @JsonKey(name: 'mana_cost') String? manaCost,
       @JsonKey(name: 'released_at') String releasedAt,
       @JsonKey(name: 'highres_image') bool highResImage,
       @JsonKey(name: 'image_status') @JsonEnum() ImageStatus imageStatus,
@@ -114,6 +117,7 @@ class _$MagicCardCopyWithImpl<$Res, $Val extends MagicCard>
     Object? layout = null,
     Object? name = null,
     Object? oracleText = freezed,
+    Object? manaCost = freezed,
     Object? releasedAt = null,
     Object? highResImage = null,
     Object? imageStatus = null,
@@ -173,6 +177,10 @@ class _$MagicCardCopyWithImpl<$Res, $Val extends MagicCard>
           ? _value.oracleText
           : oracleText // ignore: cast_nullable_to_non_nullable
               as String?,
+      manaCost: freezed == manaCost
+          ? _value.manaCost
+          : manaCost // ignore: cast_nullable_to_non_nullable
+              as String?,
       releasedAt: null == releasedAt
           ? _value.releasedAt
           : releasedAt // ignore: cast_nullable_to_non_nullable
@@ -231,6 +239,7 @@ abstract class _$$MagicCardImplCopyWith<$Res>
       String layout,
       String name,
       @JsonKey(name: 'oracle_text') String? oracleText,
+      @JsonKey(name: 'mana_cost') String? manaCost,
       @JsonKey(name: 'released_at') String releasedAt,
       @JsonKey(name: 'highres_image') bool highResImage,
       @JsonKey(name: 'image_status') @JsonEnum() ImageStatus imageStatus,
@@ -265,6 +274,7 @@ class __$$MagicCardImplCopyWithImpl<$Res>
     Object? layout = null,
     Object? name = null,
     Object? oracleText = freezed,
+    Object? manaCost = freezed,
     Object? releasedAt = null,
     Object? highResImage = null,
     Object? imageStatus = null,
@@ -324,6 +334,10 @@ class __$$MagicCardImplCopyWithImpl<$Res>
           ? _value.oracleText
           : oracleText // ignore: cast_nullable_to_non_nullable
               as String?,
+      manaCost: freezed == manaCost
+          ? _value.manaCost
+          : manaCost // ignore: cast_nullable_to_non_nullable
+              as String?,
       releasedAt: null == releasedAt
           ? _value.releasedAt
           : releasedAt // ignore: cast_nullable_to_non_nullable
@@ -365,6 +379,7 @@ class _$MagicCardImpl with DiagnosticableTreeMixin implements _MagicCard {
       required this.layout,
       required this.name,
       @JsonKey(name: 'oracle_text') this.oracleText,
+      @JsonKey(name: 'mana_cost') this.manaCost,
       @JsonKey(name: 'released_at') required this.releasedAt,
       @JsonKey(name: 'highres_image') required this.highResImage,
       @JsonKey(name: 'image_status') @JsonEnum() required this.imageStatus,
@@ -420,6 +435,9 @@ class _$MagicCardImpl with DiagnosticableTreeMixin implements _MagicCard {
   @override
   @JsonKey(name: 'oracle_text')
   final String? oracleText;
+  @override
+  @JsonKey(name: 'mana_cost')
+  final String? manaCost;
 // Print fields
 // TODO custom converter and jiffy
   @override
@@ -441,7 +459,7 @@ class _$MagicCardImpl with DiagnosticableTreeMixin implements _MagicCard {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'MagicCard(id: $id, object: $object, oracleId: $oracleId, multiverseIds: $multiverseIds, mtgoId: $mtgoId, tcgplayerId: $tcgplayerId, cardmarketId: $cardmarketId, language: $language, uri: $uri, scryfallUri: $scryfallUri, layout: $layout, name: $name, oracleText: $oracleText, releasedAt: $releasedAt, highResImage: $highResImage, imageStatus: $imageStatus, imageUris: $imageUris, defaultImage: $defaultImage)';
+    return 'MagicCard(id: $id, object: $object, oracleId: $oracleId, multiverseIds: $multiverseIds, mtgoId: $mtgoId, tcgplayerId: $tcgplayerId, cardmarketId: $cardmarketId, language: $language, uri: $uri, scryfallUri: $scryfallUri, layout: $layout, name: $name, oracleText: $oracleText, manaCost: $manaCost, releasedAt: $releasedAt, highResImage: $highResImage, imageStatus: $imageStatus, imageUris: $imageUris, defaultImage: $defaultImage)';
   }
 
   @override
@@ -462,6 +480,7 @@ class _$MagicCardImpl with DiagnosticableTreeMixin implements _MagicCard {
       ..add(DiagnosticsProperty('layout', layout))
       ..add(DiagnosticsProperty('name', name))
       ..add(DiagnosticsProperty('oracleText', oracleText))
+      ..add(DiagnosticsProperty('manaCost', manaCost))
       ..add(DiagnosticsProperty('releasedAt', releasedAt))
       ..add(DiagnosticsProperty('highResImage', highResImage))
       ..add(DiagnosticsProperty('imageStatus', imageStatus))
@@ -494,6 +513,8 @@ class _$MagicCardImpl with DiagnosticableTreeMixin implements _MagicCard {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.oracleText, oracleText) ||
                 other.oracleText == oracleText) &&
+            (identical(other.manaCost, manaCost) ||
+                other.manaCost == manaCost) &&
             (identical(other.releasedAt, releasedAt) ||
                 other.releasedAt == releasedAt) &&
             (identical(other.highResImage, highResImage) ||
@@ -508,26 +529,28 @@ class _$MagicCardImpl with DiagnosticableTreeMixin implements _MagicCard {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      object,
-      oracleId,
-      const DeepCollectionEquality().hash(_multiverseIds),
-      mtgoId,
-      tcgplayerId,
-      cardmarketId,
-      language,
-      uri,
-      scryfallUri,
-      layout,
-      name,
-      oracleText,
-      releasedAt,
-      highResImage,
-      imageStatus,
-      imageUris,
-      defaultImage);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        id,
+        object,
+        oracleId,
+        const DeepCollectionEquality().hash(_multiverseIds),
+        mtgoId,
+        tcgplayerId,
+        cardmarketId,
+        language,
+        uri,
+        scryfallUri,
+        layout,
+        name,
+        oracleText,
+        manaCost,
+        releasedAt,
+        highResImage,
+        imageStatus,
+        imageUris,
+        defaultImage
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -558,6 +581,7 @@ abstract class _MagicCard implements MagicCard {
       required final String layout,
       required final String name,
       @JsonKey(name: 'oracle_text') final String? oracleText,
+      @JsonKey(name: 'mana_cost') final String? manaCost,
       @JsonKey(name: 'released_at') required final String releasedAt,
       @JsonKey(name: 'highres_image') required final bool highResImage,
       @JsonKey(name: 'image_status')
@@ -603,6 +627,9 @@ abstract class _MagicCard implements MagicCard {
   @override
   @JsonKey(name: 'oracle_text')
   String? get oracleText;
+  @override
+  @JsonKey(name: 'mana_cost')
+  String? get manaCost;
   @override // Print fields
 // TODO custom converter and jiffy
   @JsonKey(name: 'released_at')
