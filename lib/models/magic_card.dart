@@ -30,6 +30,7 @@ class MagicCard with _$MagicCard {
     required String name,
     @JsonKey(name: 'oracle_text') String? oracleText,
     @JsonKey(name: 'mana_cost') String? manaCost,
+    required Map<String, String> legalities,
 
     // Print fields
     // TODO custom converter and jiffy

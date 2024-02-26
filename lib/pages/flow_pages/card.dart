@@ -132,6 +132,39 @@ class _MagicCardPageState extends State<MagicCardPage> {
                         )
                       : const Text('vanilla creature')),
             ),
+            Expanded(
+              child: GridView.count(
+                crossAxisCount: 3,
+                children: List.generate(
+                    data.legalities.length,
+                    (index) => Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(data.legalities.keys.elementAt(index)),
+                            if (data.legalities.values.elementAt(index) ==
+                                'not_legal')
+                              {
+                                Iconify(Ion.checkmark_round,
+                                    color: Colors.green.shade600),
+                              }
+                            else if (data.legalities.values.elementAt(index) ==
+                                'not_legal')
+                              {
+                                Iconify(Ion.checkmark_round,
+                                    color: Colors.red.shade600),
+                              }
+                            else
+                              {
+                                Icon(
+                                  Iconify(Ion.checkmark_round,
+                                      color: Colors.orange.shade600),
+                                )
+                              }
+                          ],
+                        )),
+              ),
+            )
           ],
         ),
       ),

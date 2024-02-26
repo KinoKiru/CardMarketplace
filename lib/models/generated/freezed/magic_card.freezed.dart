@@ -43,7 +43,9 @@ mixin _$MagicCard {
   @JsonKey(name: 'oracle_text')
   String? get oracleText => throw _privateConstructorUsedError;
   @JsonKey(name: 'mana_cost')
-  String? get manaCost => throw _privateConstructorUsedError; // Print fields
+  String? get manaCost => throw _privateConstructorUsedError;
+  Map<String, String> get legalities =>
+      throw _privateConstructorUsedError; // Print fields
 // TODO custom converter and jiffy
   @JsonKey(name: 'released_at')
   String get releasedAt => throw _privateConstructorUsedError;
@@ -82,6 +84,7 @@ abstract class $MagicCardCopyWith<$Res> {
       String name,
       @JsonKey(name: 'oracle_text') String? oracleText,
       @JsonKey(name: 'mana_cost') String? manaCost,
+      Map<String, String> legalities,
       @JsonKey(name: 'released_at') String releasedAt,
       @JsonKey(name: 'highres_image') bool highResImage,
       @JsonKey(name: 'image_status') @JsonEnum() ImageStatus imageStatus,
@@ -118,6 +121,7 @@ class _$MagicCardCopyWithImpl<$Res, $Val extends MagicCard>
     Object? name = null,
     Object? oracleText = freezed,
     Object? manaCost = freezed,
+    Object? legalities = null,
     Object? releasedAt = null,
     Object? highResImage = null,
     Object? imageStatus = null,
@@ -181,6 +185,10 @@ class _$MagicCardCopyWithImpl<$Res, $Val extends MagicCard>
           ? _value.manaCost
           : manaCost // ignore: cast_nullable_to_non_nullable
               as String?,
+      legalities: null == legalities
+          ? _value.legalities
+          : legalities // ignore: cast_nullable_to_non_nullable
+              as Map<String, String>,
       releasedAt: null == releasedAt
           ? _value.releasedAt
           : releasedAt // ignore: cast_nullable_to_non_nullable
@@ -240,6 +248,7 @@ abstract class _$$MagicCardImplCopyWith<$Res>
       String name,
       @JsonKey(name: 'oracle_text') String? oracleText,
       @JsonKey(name: 'mana_cost') String? manaCost,
+      Map<String, String> legalities,
       @JsonKey(name: 'released_at') String releasedAt,
       @JsonKey(name: 'highres_image') bool highResImage,
       @JsonKey(name: 'image_status') @JsonEnum() ImageStatus imageStatus,
@@ -275,6 +284,7 @@ class __$$MagicCardImplCopyWithImpl<$Res>
     Object? name = null,
     Object? oracleText = freezed,
     Object? manaCost = freezed,
+    Object? legalities = null,
     Object? releasedAt = null,
     Object? highResImage = null,
     Object? imageStatus = null,
@@ -338,6 +348,10 @@ class __$$MagicCardImplCopyWithImpl<$Res>
           ? _value.manaCost
           : manaCost // ignore: cast_nullable_to_non_nullable
               as String?,
+      legalities: null == legalities
+          ? _value._legalities
+          : legalities // ignore: cast_nullable_to_non_nullable
+              as Map<String, String>,
       releasedAt: null == releasedAt
           ? _value.releasedAt
           : releasedAt // ignore: cast_nullable_to_non_nullable
@@ -380,13 +394,15 @@ class _$MagicCardImpl with DiagnosticableTreeMixin implements _MagicCard {
       required this.name,
       @JsonKey(name: 'oracle_text') this.oracleText,
       @JsonKey(name: 'mana_cost') this.manaCost,
+      required final Map<String, String> legalities,
       @JsonKey(name: 'released_at') required this.releasedAt,
       @JsonKey(name: 'highres_image') required this.highResImage,
       @JsonKey(name: 'image_status') @JsonEnum() required this.imageStatus,
       @JsonKey(name: 'image_uris') this.imageUris,
       this.defaultImage =
           "https://i0.wp.com/mastare.nl/wp-content/uploads/2023/01/placeholder-285.png?ssl=1"})
-      : _multiverseIds = multiverseIds;
+      : _multiverseIds = multiverseIds,
+        _legalities = legalities;
 
   factory _$MagicCardImpl.fromJson(Map<String, dynamic> json) =>
       _$$MagicCardImplFromJson(json);
@@ -438,6 +454,14 @@ class _$MagicCardImpl with DiagnosticableTreeMixin implements _MagicCard {
   @override
   @JsonKey(name: 'mana_cost')
   final String? manaCost;
+  final Map<String, String> _legalities;
+  @override
+  Map<String, String> get legalities {
+    if (_legalities is EqualUnmodifiableMapView) return _legalities;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_legalities);
+  }
+
 // Print fields
 // TODO custom converter and jiffy
   @override
@@ -459,7 +483,7 @@ class _$MagicCardImpl with DiagnosticableTreeMixin implements _MagicCard {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'MagicCard(id: $id, object: $object, oracleId: $oracleId, multiverseIds: $multiverseIds, mtgoId: $mtgoId, tcgplayerId: $tcgplayerId, cardmarketId: $cardmarketId, language: $language, uri: $uri, scryfallUri: $scryfallUri, layout: $layout, name: $name, oracleText: $oracleText, manaCost: $manaCost, releasedAt: $releasedAt, highResImage: $highResImage, imageStatus: $imageStatus, imageUris: $imageUris, defaultImage: $defaultImage)';
+    return 'MagicCard(id: $id, object: $object, oracleId: $oracleId, multiverseIds: $multiverseIds, mtgoId: $mtgoId, tcgplayerId: $tcgplayerId, cardmarketId: $cardmarketId, language: $language, uri: $uri, scryfallUri: $scryfallUri, layout: $layout, name: $name, oracleText: $oracleText, manaCost: $manaCost, legalities: $legalities, releasedAt: $releasedAt, highResImage: $highResImage, imageStatus: $imageStatus, imageUris: $imageUris, defaultImage: $defaultImage)';
   }
 
   @override
@@ -481,6 +505,7 @@ class _$MagicCardImpl with DiagnosticableTreeMixin implements _MagicCard {
       ..add(DiagnosticsProperty('name', name))
       ..add(DiagnosticsProperty('oracleText', oracleText))
       ..add(DiagnosticsProperty('manaCost', manaCost))
+      ..add(DiagnosticsProperty('legalities', legalities))
       ..add(DiagnosticsProperty('releasedAt', releasedAt))
       ..add(DiagnosticsProperty('highResImage', highResImage))
       ..add(DiagnosticsProperty('imageStatus', imageStatus))
@@ -515,6 +540,8 @@ class _$MagicCardImpl with DiagnosticableTreeMixin implements _MagicCard {
                 other.oracleText == oracleText) &&
             (identical(other.manaCost, manaCost) ||
                 other.manaCost == manaCost) &&
+            const DeepCollectionEquality()
+                .equals(other._legalities, _legalities) &&
             (identical(other.releasedAt, releasedAt) ||
                 other.releasedAt == releasedAt) &&
             (identical(other.highResImage, highResImage) ||
@@ -545,6 +572,7 @@ class _$MagicCardImpl with DiagnosticableTreeMixin implements _MagicCard {
         name,
         oracleText,
         manaCost,
+        const DeepCollectionEquality().hash(_legalities),
         releasedAt,
         highResImage,
         imageStatus,
@@ -582,6 +610,7 @@ abstract class _MagicCard implements MagicCard {
       required final String name,
       @JsonKey(name: 'oracle_text') final String? oracleText,
       @JsonKey(name: 'mana_cost') final String? manaCost,
+      required final Map<String, String> legalities,
       @JsonKey(name: 'released_at') required final String releasedAt,
       @JsonKey(name: 'highres_image') required final bool highResImage,
       @JsonKey(name: 'image_status')
@@ -630,6 +659,8 @@ abstract class _MagicCard implements MagicCard {
   @override
   @JsonKey(name: 'mana_cost')
   String? get manaCost;
+  @override
+  Map<String, String> get legalities;
   @override // Print fields
 // TODO custom converter and jiffy
   @JsonKey(name: 'released_at')

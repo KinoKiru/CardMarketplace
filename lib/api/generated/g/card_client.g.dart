@@ -22,10 +22,10 @@ class _CardClient implements CardClient {
 
   @override
   Future<MagicCard> getCardById(String id) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<MagicCard>(Options(
       method: 'GET',
@@ -49,10 +49,10 @@ class _CardClient implements CardClient {
 
   @override
   Future<MagicCard> getRandomCard() async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<MagicCard>(Options(
       method: 'GET',
@@ -76,10 +76,10 @@ class _CardClient implements CardClient {
 
   @override
   Future<ListWrapper<MagicCard>> searchCards(String searchValue) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'q': searchValue};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ListWrapper<MagicCard>>(Options(
       method: 'GET',
