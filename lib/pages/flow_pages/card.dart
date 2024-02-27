@@ -7,6 +7,7 @@ import 'package:card_marketplace/utils/parse_symbol.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
+import 'package:iconify_flutter/icons/ion.dart';
 import 'package:iconify_flutter/icons/material_symbols.dart';
 
 class MagicCardPage extends StatefulWidget {
@@ -19,6 +20,17 @@ class MagicCardPage extends StatefulWidget {
 
 class _MagicCardPageState extends State<MagicCardPage> {
   ParseSymbol symbolParser = ParseSymbol();
+
+  Widget getIcon(String data) {
+    if (data == 'legal') {
+      return Iconify(Ion.checkmark_round, color: Colors.green.shade600);
+    } else if (data == 'not_legal') {
+      return Iconify(Ion.xbox, color: Colors.red.shade600);
+    } else {
+      return Iconify(Ion.checkmark_round, color: Colors.orange.shade600);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     Dio dio = Dio();
@@ -136,33 +148,16 @@ class _MagicCardPageState extends State<MagicCardPage> {
               child: GridView.count(
                 crossAxisCount: 3,
                 children: List.generate(
-                    data.legalities.length,
-                    (index) => Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(data.legalities.keys.elementAt(index)),
-                            if (data.legalities.values.elementAt(index) ==
-                                'not_legal')
-                              {
-                                Iconify(Ion.checkmark_round,
-                                    color: Colors.green.shade600),
-                              }
-                            else if (data.legalities.values.elementAt(index) ==
-                                'not_legal')
-                              {
-                                Iconify(Ion.checkmark_round,
-                                    color: Colors.red.shade600),
-                              }
-                            else
-                              {
-                                Icon(
-                                  Iconify(Ion.checkmark_round,
-                                      color: Colors.orange.shade600),
-                                )
-                              }
-                          ],
-                        )),
+                  data.legalities.length,
+                  (index) => Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(data.legalities.keys.elementAt(index)),
+                      getIcon(data.legalities.values.elementAt(index))
+                    ],
+                  ),
+                ),
               ),
             )
           ],
