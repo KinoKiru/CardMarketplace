@@ -7,6 +7,7 @@ import 'package:card_marketplace/utils/parse_symbol.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
+import 'package:iconify_flutter/icons/akar_icons.dart';
 import 'package:iconify_flutter/icons/ion.dart';
 import 'package:iconify_flutter/icons/material_symbols.dart';
 
@@ -25,7 +26,7 @@ class _MagicCardPageState extends State<MagicCardPage> {
     if (data == 'legal') {
       return Iconify(Ion.checkmark_round, color: Colors.green.shade600);
     } else if (data == 'not_legal') {
-      return Iconify(Ion.xbox, color: Colors.red.shade600);
+      return Iconify(AkarIcons.cross, color: Colors.red.shade600);
     } else {
       return Iconify(Ion.checkmark_round, color: Colors.orange.shade600);
     }
@@ -154,7 +155,19 @@ class _MagicCardPageState extends State<MagicCardPage> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(data.legalities.keys.elementAt(index)),
-                      getIcon(data.legalities.values.elementAt(index))
+                      Container(
+                        decoration: BoxDecoration(
+                            color: Colors.grey.shade400,
+                            borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(8),
+                                bottomRight: Radius.circular(8))),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: getIcon(
+                            data.legalities.values.elementAt(index),
+                          ),
+                        ),
+                      )
                     ],
                   ),
                 ),
