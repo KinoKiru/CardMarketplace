@@ -201,12 +201,14 @@ class _MagicCardPageState extends State<MagicCardPage> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Container(
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           border: Border.fromBorderSide(
-                            BorderSide(color: Colors.black),
+                            BorderSide(
+                                color:
+                                    Theme.of(context).colorScheme.onBackground),
                           ),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(8.0),
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(7.0),
                           ),
                         ),
                         child: Row(
