@@ -6,6 +6,8 @@ import 'package:card_marketplace/models/magic_card.dart';
 import 'package:card_marketplace/utils/parse_symbol.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/akar_icons.dart';
 import 'package:iconify_flutter/icons/ion.dart';
@@ -47,7 +49,27 @@ class _MagicCardPageState extends State<MagicCardPage> {
               showModalBottomSheet<void>(
                 context: context,
                 builder: (BuildContext context) => CustomBottomSheet(
-                  copyData: data.uri.toString(),
+                  items: [
+                    ListTile(
+                      onTap: () async {
+                        await Clipboard.setData(
+                          ClipboardData(
+                            text: data.scryfallUri.toString(),
+                          ),
+                        ).then(
+                          (_) => ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              behavior: SnackBarBehavior.floating,
+                              content: I18nText("sheet.copied"),
+                            ),
+                          ),
+                        );
+                      },
+                      leading: Iconify(MaterialSymbols.share,
+                          color: Theme.of(context).colorScheme.onBackground),
+                      title: I18nText('sheet.share'),
+                    ),
+                  ],
                 ),
               );
             },
@@ -114,7 +136,22 @@ class _MagicCardPageState extends State<MagicCardPage> {
                           : const Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [Text("No mana cost")],
-                            )
+                            ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                            data.toughness != null
+                                ? "${data.power}/${data.toughness}"
+                                : "",
+                            style: TextStyle(
+                              color: Theme.of(context).colorScheme.background,
+                              fontSize: 20,
+                            ),
+                          ),
+                        ],
+                      )
                     ],
                   ),
                 ),
@@ -133,46 +170,78 @@ class _MagicCardPageState extends State<MagicCardPage> {
                   ),
                   borderRadius: BorderRadius.all(Radius.circular(10))),
               child: Center(
-                  child: data.oracleText != null
-                      ? SimpleAsyncBuilder(
-                          future: symbolParser.parseSymbols(data.oracleText!),
-                          onLoad: (data, context) => Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Wrap(
-                              children: data,
-                            ),
+                child: data.oracleText != null
+                    ? SimpleAsyncBuilder(
+                        future: symbolParser.parseSymbols(data.oracleText!),
+                        onLoad: (data, context) => Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Wrap(
+                            children: data,
                           ),
-                        )
-                      : const Text('vanilla creature')),
+                        ),
+                      )
+                    : const Text('vanilla creature'),
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                "Legalities",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+              ),
             ),
             Expanded(
               child: GridView.count(
-                crossAxisCount: 3,
+                crossAxisCount: 2,
+                childAspectRatio: 3.3,
                 children: List.generate(
                   data.legalities.length,
                   (index) => Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text(data.legalities.keys.elementAt(index)),
                       Container(
-                        decoration: BoxDecoration(
-                            color: Colors.grey.shade400,
-                            borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(8),
-                                bottomRight: Radius.circular(8))),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: getIcon(
-                            data.legalities.values.elementAt(index),
+                        decoration: const BoxDecoration(
+                          border: Border.fromBorderSide(
+                            BorderSide(color: Colors.black),
+                          ),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(8.0),
                           ),
                         ),
-                      )
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child:
+                                  Text(data.legalities.keys.elementAt(index)),
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Colors.grey.shade400,
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: getIcon(
+                                  data.legalities.values.elementAt(index),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),
               ),
-            )
+            ),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                "Flavor text",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+              ),
+            ),
           ],
         ),
       ),
